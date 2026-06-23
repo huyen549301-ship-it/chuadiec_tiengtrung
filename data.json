@@ -50,6 +50,102 @@
         "rate": 1,
         "pitch": 1,
         "audio": ""
+      },
+        {
+        "answer": "我是越南人。",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
+      },
+      {
+        "answer": "你是哪国人？",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
+      },
+      {
+        "answer": "您好！",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
+      },
+      {
+        "answer": "你们好！",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
+      },
+      {
+        "answer": "不谢",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
+      },
+        {
+        "answer": "你叫什么名字？",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
+      },
+      {
+        "answer": "我叫李月。",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
+      },
+      {
+        "answer": "你是老师吗？",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
+      },
+      {
+        "answer": "我不是老师。",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
+      },
+      {
+        "answer": "我是学生。",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
+      },
+      {
+        "answer": "我是美国人。",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
+      },
+      {
+        "answer": "你是中国人吗？",
+        "isTTS": true,
+        "voiceName": "Google 普通话（中国大陆）",
+        "rate": 1,
+        "pitch": 1,
+        "audio": ""
       }
     ]
   },
