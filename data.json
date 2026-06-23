@@ -6,189 +6,27 @@
       {
         "answer": "听说你男朋友李进跟你是一个学校的，是你同学吗？\n是的，他学的是新闻，我学的是法律，我和他不是一个班。\n那你们俩是怎么认识的？\n我们是在一次足球比赛中认识的。我们班跟他们班比赛，他一个人踢进两个球，我对他印象很深，后来就慢慢熟悉了。\n你为什么喜欢他？\n他不仅足球踢得好，性格也不错。",
         "isTTS": false,
-        "audio": "./audio/1.1.mp3"
+        "audio": "https://cdn.jsdelivr.net/gh/huyen549301-ship-it/chuadiec_tiengtrung@main/audio/1.1.mp3"
       },
       {
         "answer": "李老师，我下个月五号就要结婚了。\n你是在开玩笑吧？你们不是才认识一个月？\n虽然我们认识的时间不长，但我从来没这么快乐过。\n两个人在一起，最好能有共同的兴趣和爱好。\n我们有很多共同的爱好，经常一起打球、唱歌、做菜。\n看来你真的找到适合你的人了。祝你们幸福！",
         "isTTS": false,
-        "audio": "./audio/HSK4-B1.2.mp3"
+        "audio": "https://cdn.jsdelivr.net/gh/huyen549301-ship-it/chuadiec_tiengtrung@main/audio/HSK4-B1.2.mp3"
       },
       {
-        "answer": "听说您跟妻子结婚快二十年了？\n到6月9号，我们就结婚二十年了。这么多年，我们的生活一直挺幸福的。\n我和丈夫刚结婚的时候，每天都觉得新鲜，在一起有说不完的话。但是现在……\n两个人共同生活，只有浪漫和新鲜感是不够的。\n您说得对！我现在每天看到的都是他的缺点。\n两个人在一起时间长了，就会有很多问题。只有接受了他的缺点，你们才能更好地一起生活。",
+        "answer": "听说您跟妻子结婚快二十年了？\n到6月9号，我们就结婚二十年了。这么多年，我们的生活一直挺幸福的。\n我和丈夫刚结婚的时候，每天都觉得新鲜，在一起有说不完的话。但是现在……\n两个人共同生活，只有浪漫和新鲜感是不够的。",
         "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/HSK4%20-%20B1.3%20.mp3"
-      },
-      {
-        "answer": "很多女孩子羡慕浪漫的爱情。那什么是浪漫呢？年轻人说：浪漫是她想要月亮时，你不会给她星星；中年人说：浪漫是即使晚上加班到零点，到家时，自己家里也还亮着灯；老年人说：浪漫其实就像歌中唱的那样，“我能想到最浪漫的事，就是和你一起慢慢变老。”其实，让我们感动的，就是生活中简单的爱情。有时候，简单就是最大的幸福。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/HSK4%20-%20B1.4%20.mp3"
-      },
-      {
-        "answer": "说到结婚，人们就会很自然地想起爱情。爱情是结婚的重要原因，因为两个人共同生活，不仅需要浪漫的爱情，更需要性格上互相吸引。我丈夫是个很幽默的人。即使是很普通的事情，从他嘴里说出来也会变得很有意思。在我难过的时候，他总是有办法让我高兴起来。而且他的脾气也不错，结婚快十年了，我们俩几乎没因为什么事红过脸，很多人都特别羡慕我们。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/HSK4%20-%20B1.5%20.mp3"
-      }
-    ]
-  },
-  {
-    "id": 1782197001372,
-    "title": "H41553D",
-    "questions": [
-      {
-        "answer": "他虽然不是在这儿出生的，但却是在这儿长大的。他三岁跟父亲母亲一起来到这儿，就再也没离开过。因此，他对这个地方感情很深。\n★ 他刚来这儿不久。",
-        "isTTS": false,
-        "audio": "./audio/1.1.mp3"
-      },
-      {
-        "answer": "我爸爸是一位记者，他总是告诉我，做记者既要及时地报道社会上发生的事情，也要保证新闻的准确性。 \n★ 他父亲是记者。",
-        "isTTS": false,
-        "audio": "./audio/1.2.mp3"
-      },
-      {
-        "answer": "科学研究发现，经常笑的人更容易感到幸福，而且更不容易生病。 \n★ 笑使人更健康。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/1.3.mp3"
-      },
-      {
-        "answer": "多与人交流当然有很多好处。通过交流，你不但可以增加对别人的了解，而且可以从不同的人那里得到不同的知识、经验、快乐等。\n★ 要多与人交流。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/1.4.mp3"
-      },
-      {
-        "answer": "去面试的时候衣服要穿得正式一些，不能太随便，穿戴整齐表示你对面试者的尊重，会给他留下一个好的印象。\n★ 面试时必须准时到。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/1.5.mp3"
-      },
-      {
-        "answer": "下周的演出，我们邀请到了多位著名艺术家，表演将非常精彩，欢迎大家前来购票。购买五张以上的，打八折。\n★ 只买一张票不能打折。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/1.6.mp3"
-      },
-      {
-        "answer": "写日记是我生活中不可缺少的一部分。无论是烦恼的事，还是愉快的事，我都会记下来。日记本就像我的老朋友，生活的酸甜苦辣我都会告诉它。\n★ 日记是他生活的一部分。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/1.7.mp3"
-      },
-      {
-        "answer": "今年春节他们本来打算出国去逛逛，但是由于家里的老人突然生病了，他们只好放弃了这个计划。\n★ 他们准备陪老人去散步。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/1.8.mp3"
-      },
-      {
-        "answer": "三十七岁的王教授，在我们学校很有名，不但会三种语言，而且会写小说，各方面都很优秀。\n★ 王教授脾气很大。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/1.9.mp3"
-      },
-      {
-        "answer": "我最近阅读过两篇跟中国有关的文章，一篇介绍的是长城，另外一篇介绍的是京剧，都很有特点，让我学到了很多知识。\n★ 他读了介绍黄河的文章。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/1.10.mp3"
-      },
-      {
-        "answer": "从这儿到国家图书馆远吗？咱们怎么走？\n坐公交车大概得一个多小时，这会儿肯定堵车，我们还是坐地铁吧。  \n女的是什么意思？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.1.mp3"
-      },
-      {
-        "answer": "你们今天讨论得怎么样？有结果吗？\n大家都同意把招聘会推迟到五月十二号。\n大家希望什么时候举行招聘会？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.2.mp3"
-      },
-      {
-        "answer": "不好意思，小姐，我们这里只能用现金付款。\n可我今天只带了银行卡，这附近有取款机吗？\n女的接下来最可能去做什么？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.3.mp3"
-      },
-      {
-        "answer": "什么事让你这么高兴啊？\n我们和上次那个广告公司的生意终于谈成了。 \n男的为什么高兴？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.4.mp3"
-      },
-      {
-        "answer": "大夫，我的牙最近疼得厉害，不知道是怎么回事。 \n你先躺这儿，好，张开嘴我看看。\n男的哪里不舒服？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.5.mp3"
-      },
-      {
-        "answer": "看你这轻松的样子，问题解决了？\n是的，白老师提醒我换一种方法试试，问题果然就解决了。\n男的现在心情怎么样？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.6.mp3"
-      },
-      {
-        "answer": "这葡萄真甜，你在哪儿买的？\n是家里亲戚寄过来的，他们那儿的葡萄非常好吃。\n葡萄是谁送的？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.7.mp3"
-      },
-      {
-        "answer": "你的腿怎么流血了？我带你去医院吧。 \n没关系，刚才踢足球不小心擦破了皮，不疼。\n男的刚才怎么了？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.8.mp3"
-      },
-      {
-        "answer": "你对新来的那个小伙子印象怎么样？\n不错，人很聪明，学东西也快，就是缺少经验，还需要多锻炼锻炼。\n女的觉得那个小伙子怎么样？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.9.mp3"
-      },
-      {
-        "answer": "我觉得这个电视节目越来越无聊了。\n是啊，听说这个节目的观众数量一直在减少。\n关于那个电视节目，可以知道什么？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.10.mp3"
-      },
-      {
-        "answer": "小姐，我女儿多少钱一张票？\n您好，您的六十，您孩子买儿童票，半价。\n女儿的票多少钱一张？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.11.mp3"
-      },
-      {
-        "answer": "申请表填好了，我打印出来传真给你？\n不用，直接发电子邮件给我就行。\n男的希望女的怎么做？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.12.mp3"
-      },
-      {
-        "answer": "原来你还会写小说，真让人吃惊。\n其实我大学是学中文专业的，只是后来当了律师。\n关于女的，下列哪个正确？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.14.mp3"
-      },
-      {
-        "answer": "她乘坐的就是这个航班呀，怎么还没看见她呢？\n你给她打个电话，看看她手机开了没有。\n他们最可能在哪儿？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.13.mp3"
-      },
-      {
-        "answer": "我刚才听广播里说，明天气温会降低。\n太好了！这几天实在是太热了，晚上都热得睡不着。\n根据对话，明天会怎么样？",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/2.15.mp3"
-      }
-    ]
-  },
-  {
-    "id": 1782204564086,
-    "title": "HSK4-B2",
-    "questions": [
-      {
-        "answer": "来中国快一年了，你适应这儿的生活了吗？\n开始有点儿不习惯，后来就慢慢适应了，最近我还交了一个中国朋友。\n那就好，快给我讲讲你新交的中国朋友。\n我们是在图书馆认识的。平时我们常常一起看书、逛街、踢足球。有时候他还给我发一些幽默短信。\n你的这个朋友真不错！下次介绍我们认识认识，怎么样？\n没问题！我们下午要去踢足球，正好一起去吧。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/HSK4-B2.1.mp3"
+        "audio": "https://cdn.jsdelivr.net/gh/huyen549301-ship-it/chuadiec_tiengtrung@main/audio/HSK4-B2.1.mp3"
       },
       {
         "answer": "星期天同学聚会，你能来吗？\n能来。班里同学你联系得怎么样了？来多少人？\n差不多一半儿吧，张远还专门从国外飞回来呢。\n是吗？毕业都快十年了，真想大家啊！对了，今天早上，我在地铁站遇到了王静，她毕业后就去上海工作了，她这次是来旅游的。\n那太好了！麻烦你跟她联系一下，请她一起来参加同学聚会。聚会就在学校门口那个饭店，六点半。别迟到啊！\n放心吧。星期天六点半见!",
         "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/HSK4-B2.2.mp3"
+        "audio": "https://cdn.jsdelivr.net/gh/huyen549301-ship-it/chuadiec_tiengtrung@main/audio/HSK4-B2.2.mp3"
       },
       {
         "answer": "这是什么时候的照片？你真年轻！\n这是上大学时的照片。一看到这张照片，我就想起过去那段快乐的日子，好像重新回到了校园。\n旁边这个人一定是你的好朋友吧？你们现在还联系吗？\n当然了，尽管已经毕业这么多年，我们还是经常联系的，每次都有说不完的话。\n真羡慕你！我上大学时最好的朋友去了南方工作，我们俩已经好久没联系了。我一会儿就给她打个电话。\n对。要知道，能有一个真正的朋友，有一段真正的友谊，是多么不容易！",
         "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/HSK4-B2.3.mp3"
-      },
-      {
-        "answer": "每个人都需要朋友，朋友可以丰富我们的生活。离开朋友，我们的生活一定会非常无聊？那么，怎样才能交到更多的朋友呢？当然，要有好脾气。一个脾气不好的人虽然不一定让人讨厌，但是却很难跟人交朋友。因为没有人会喜欢跟一个总是容易生气的人在一起。我们还要经常跟周围的人交流。交流能让人们互相了解，如果有共同的兴趣、爱好或者习惯，就更容易成为朋友了。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/HSK4-B2.4.mp3"
-      },
-      {
-        "answer": "人的一生可以什么也没有，但不能没有朋友，而且必须要有自己真正的朋友。什么是真正的朋友？不同的人会有不同的理解。有些人觉得朋友就是能和自己一起快乐的人；有些人觉得朋友应该像镜子，能帮自己看到缺点。而我的理解是：当你遇到困难的时候，真正的朋友会站出来，及时给你帮助；当你无聊或者难过的时候，真正的朋友会陪在你身边，想办法让你感到幸福。",
-        "isTTS": false,
-        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/HSK4-B2.5.mp3"
+        "audio": "https://cdn.jsdelivr.net/gh/huyen549301-ship-it/chuadiec_tiengtrung@main/audio/HSK4-B2.3.mp3"
       }
     ]
   }
