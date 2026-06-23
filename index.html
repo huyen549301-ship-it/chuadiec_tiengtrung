@@ -19,34 +19,24 @@ body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe 
 .hidden{display:none}
 .item-flex {display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 8px 10px;}
 .dark .item-flex {border-bottom: 1px solid #444;}
-.item-flex.dragging {opacity: 0.5; background: #e9ecef;}
 .drag-handle {cursor: grab; margin-right: 10px; color: #ccc; font-size: 18px;}
 
-#ans, .edit-textarea { resize: none; overflow-y: auto; min-height: 40px; max-height: 125px; }
+#ans { resize: none; overflow-y: auto; min-height: 40px; max-height: 125px; }
 .one-line-text { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-.tts-player-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; max-width: 500px; margin: 0 auto; background: rgba(0,0,0,0.03); padding: 10px 20px; border-radius: 30px; }
-.dark .tts-player-wrapper { background: rgba(255,255,255,0.05); }
-.tts-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.tts-progress-container { flex-grow: 1; height: 8px; background: #e0e0e0; border-radius: 4px; position: relative; overflow: hidden; }
-.dark .tts-progress-container { background: #444; }
-.tts-progress-bar { width: 0%; height: 100%; background: #0d6efd; border-radius: 4px; transition: width 0.05s linear; }
 
 #toastNotice { position: fixed; top: 20px; right: 20px; z-index: 9999; min-width: 250px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: opacity 0.3s; opacity: 0; pointer-events: none; }
 #toastNotice.show { opacity: 1; }
 
 .custom-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
 .custom-modal-overlay.show { opacity: 1; pointer-events: auto; }
-.custom-modal-content { background: white; padding: 25px; border-radius: 15px; max-width: 450px; width: 90%; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transform: scale(0.8); transition: transform 0.25s; }
+.custom-modal-content { background: white; padding: 25px; border-radius: 15px; max-width: 450px; width: 90%; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 .dark .custom-modal-content { background: #2d2d2d; color: #eee; }
-.custom-modal-overlay.show .custom-modal-content { transform: scale(1); }
 
 .search-combo-container { position: relative; width: 100%; }
-.search-results-dropdown { position: absolute; top: 100%; left: 0; right: 0; z-index: 1050; max-height: 250px; overflow-y: auto; background: #fff; border: 1px solid #ced4da; border-radius: 0 0 6px 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); display: none; }
-.dark .search-results-dropdown { background: #2d2d2d; border-color: #555; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
-.search-result-item { padding: 10px 12px; cursor: pointer; border-bottom: 1px solid #f1f1f1; transition: background 0.2s; text-align: left; }
+.search-results-dropdown { position: absolute; top: 100%; left: 0; right: 0; z-index: 1050; max-height: 250px; overflow-y: auto; background: #fff; border: 1px solid #ced4da; border-radius: 0 0 6px 6px; display: none; }
+.dark .search-results-dropdown { background: #2d2d2d; border-color: #555; }
+.search-result-item { padding: 10px 12px; cursor: pointer; border-bottom: 1px solid #f1f1f1; text-align: left; }
 .dark .search-result-item { border-bottom: 1px solid #444; }
-.search-result-item:last-child { border-bottom: none; }
 .search-result-item:hover, .search-result-item.active { background: #e9ecef; }
 .dark .search-result-item:hover, .dark .search-result-item.active { background: #3d3d3d; }
 </style>
@@ -54,7 +44,7 @@ body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe 
 <body>
 <div class="container" style="max-width: 900px;">
 <div class="d-flex justify-content-between align-items-center mb-4">
-  <h1>🎧 Chữa điếc tiếng Trung <small class="text-muted fs-6">(Đồng bộ tự động Cloud)</small></h1>
+  <h1>🎧 Chữa điếc tiếng Trung <small class="text-muted fs-6">(Đồng bộ tối ưu hóa Cloud)</small></h1>
   <button class="btn btn-dark" onclick="document.body.classList.toggle('dark')">Dark Mode</button>
 </div>
 
@@ -64,29 +54,7 @@ body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe 
   <div class="custom-modal-content">
     <h3 class="text-success mb-3">🎉 Hoàn Thành Bài Học!</h3>
     <p id="modalBodyText" class="fs-5 mb-4"></p>
-    <button class="btn btn-primary px-4" onclick="closeEndModal()">Tuyệt vời, làm lại bài này</button>
-  </div>
-</div>
-
-<div id="deleteConfirmModal" class="custom-modal-overlay">
-  <div class="custom-modal-content border border-danger">
-    <h3 class="text-danger mb-3">⚠️ Xác Nhận Xóa Hẳn Bài Học</h3>
-    <p id="deleteModalBodyText" class="fs-6 mb-4 text-start bg-light p-3 rounded dark:bg-dark"></p>
-    <div class="d-flex justify-content-center gap-2">
-      <button class="btn btn-secondary px-3" onclick="closeModal('deleteConfirmModal')">Hủy bỏ</button>
-      <button class="btn btn-danger px-3" onclick="executeDeleteTopic()">Đồng ý xóa dữ liệu</button>
-    </div>
-  </div>
-</div>
-
-<div id="deleteQuestionModal" class="custom-modal-overlay">
-  <div class="custom-modal-content border border-warning">
-    <h3 class="text-warning mb-3">❓ Xác Nhận Xóa Câu Hỏi</h3>
-    <p id="deleteQuestionBodyText" class="fs-6 mb-4 text-start bg-light p-3 rounded dark:bg-dark"></p>
-    <div class="d-flex justify-content-center gap-2">
-      <button class="btn btn-secondary px-3" onclick="closeModal('deleteQuestionModal')">Hủy bỏ</button>
-      <button class="btn btn-warning text-dark px-3 fw-bold" onclick="executeDeleteQuestion()">Đồng ý xóa</button>
-    </div>
+    <button class="btn btn-primary px-4" onclick="closeEndModal()">Làm lại bài này</button>
   </div>
 </div>
 
@@ -95,12 +63,12 @@ body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe 
     <div class="col-md-5">
       <label for="role" class="form-label fw-bold">Vai trò hệ thống:</label>
       <select id="role" class="form-select" onchange="login()">
-        <option value="student">Học viên (Luyện nghe từ Cloud)</option>
-        <option value="teacher">Giáo viên (Quản lý & Xuất bản bài học)</option>
+        <option value="student">Học viên (Luyện nghe)</option>
+        <option value="teacher">Giáo viên (Cấu hình bài học)</option>
       </select>
     </div>
     <div class="col-md-7">
-      <label class="form-label fw-bold mb-2">Chọn Bài Học Muốn Tương Tác:</label>
+      <label class="form-label fw-bold mb-2">Chọn Bài Học:</label>
       <div class="search-combo-container">
         <input type="text" id="lessonSearchInput" class="form-control border-primary" 
                placeholder="🔍 Đang tải dữ liệu từ đám mây..." 
@@ -115,58 +83,38 @@ body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe 
 <div id="teacher" class="hidden card p-4 mb-4 border-warning shadow-sm">
   <h3 class="text-warning mb-3">🛠️ Khu vực Quản lý (Giáo viên)</h3>
   
-  <div class="alert alert-info py-2 small">
-    ℹ️ <strong>Quy trình đồng bộ:</strong> Thêm/Sửa/Xóa xong bài học ➡️ Bấm <strong>"Tải File JSON mới về máy"</strong> ➡️ Upload đè file đó lên GitHub của bạn để học viên tự động nhận bài mới.
-  </div>
-
   <div class="card p-3 mb-4 border-secondary bg-light text-dark">
-    <h6 class="fw-bold text-secondary">📁 Quản lý Danh mục Bài học (Khóa học)</h6>
     <div class="input-group mb-2">
       <input type="text" id="newTopicTitle" class="form-control" placeholder="Nhập tên bài học mới...">
-      <button class="btn btn-primary" onclick="createNewTopic()">➕ Tạo Bài Học Mới</button>
+      <button class="btn btn-primary" onclick="createNewTopic()">➕ Tạo Bài Mới</button>
     </div>
-    <div class="d-flex justify-content-between align-items-center mt-2 small text-muted w-100">
-      <div id="topicTitleDisplayContainer" class="d-flex align-items-center gap-1 flex-grow-1" style="max-width: 70%;">
-        <span>Đang cấu hình cho bài học:</span>
-        <strong id="teacherCurrentTopicLabel" class="text-danger text-truncate" style="max-width: 200px;">Chưa chọn bài học nào</strong>
-        <button id="editTopicBtn" class="btn btn-link btn-sm p-0 text-decoration-none ms-1" onclick="toggleEditTopicTitle()" title="Sửa tên bài học">✏️</button>
-      </div>
-      <button class="btn btn-danger btn-sm py-0 flex-shrink-0" onclick="triggerDeleteTopicModal()">❌ Xóa hẳn Bài học này</button>
+    <div class="small text-muted mt-1">
+      Đang cấu hình: <strong id="teacherCurrentTopicLabel" class="text-danger">Chưa chọn</strong>
     </div>
   </div>
 
-  <div>
-    <div class="mb-3">
-      <label class="form-label fw-bold">Nhập nội dung/đáp án câu hỏi (Chữ Hán hoặc Pinyin):</label>
-      <textarea id="ans" class="form-control" rows="1" placeholder="Ví dụ: Nǐ hǎo ma?..." oninput="autoResizeTextarea(this)"></textarea>
-    </div>
+  <div class="mb-3">
+    <label class="form-label fw-bold">1. Nhập đáp án câu hỏi (Chữ Hán/Pinyin):</label>
+    <textarea id="ans" class="form-control" rows="1" placeholder="Ví dụ: Nǐ hǎo ma?..." oninput="autoResizeTextarea(this)"></textarea>
+  </div>
 
-    <div class="card p-3 mb-3 bg-white text-dark border-info">
-      <h6 class="fw-bold text-info">🗣️ Công cụ Tạo Giọng Đọc AI (Tiếng Trung)</h6>
-      <div class="row g-2 mb-2">
-        <div class="col-md-6"><select id="ttsVoiceSelect" class="form-select form-select-sm"></select></div>
-        <div class="col-md-3"><label class="small fw-bold">Tốc độ:</label><input type="range" id="ttsRate" class="form-range" min="0.5" max="1.5" step="0.1" value="1"></div>
-        <div class="col-md-3"><label class="small fw-bold">Cao độ:</label><input type="range" id="ttsPitch" class="form-range" min="0.5" max="1.5" step="0.1" value="1"></div>
-      </div>
-      <div class="d-flex gap-2">
-        <button type="button" class="btn btn-sm btn-info text-white" onclick="previewTTS()">🔊 Nghe thử</button>
-        <button type="button" class="btn btn-sm btn-success" onclick="addQuestion(true)">✨ Thêm bằng Giọng AI</button>
-      </div>
-    </div>
-    
-    <div class="mb-3">
-      <label class="form-label fw-bold">Hoặc chọn File âm thanh thủ công từ máy tính:</label>
-      <input type="file" id="audio" accept="audio/*" class="form-control">
-      <button class="btn btn-success btn-sm mt-2" onclick="addQuestion(false)">➕ Thêm bằng File thủ công</button>
+  <div class="card p-3 mb-3 bg-white text-dark border-primary">
+    <h6 class="fw-bold text-primary">Phương thức: Dán link file âm thanh tự chọn (Khuyên dùng - File siêu nhẹ)</h6>
+    <input type="text" id="audioUrlInput" class="form-control" placeholder="Dán link .mp3 vào đây (Ví dụ: https://tenweb.com/audio1.mp3)">
+    <button class="btn btn-primary btn-sm mt-2" onclick="addQuestion(false)">➕ Thêm bằng Link Âm Thanh</button>
+  </div>
+
+  <div class="card p-3 mb-3 bg-white text-dark border-info">
+    <h6 class="fw-bold text-info">🗣️ Hoặc sử dụng Giọng đọc máy AI nhanh</h6>
+    <div class="d-flex gap-2">
+      <button type="button" class="btn btn-sm btn-success" onclick="addQuestion(true)">✨ Thêm bằng Giọng AI</button>
     </div>
   </div>
   
   <hr>
-  <div class="mb-3 text-end">
-    <button class="btn btn-danger btn-lg fw-bold w-100" onclick="exportJSON()">💾 Bước cuối: Tải File JSON mới về máy</button>
-  </div>
+  <button class="btn btn-danger btn-lg fw-bold w-100" onclick="exportJSON()">💾 Tải File data.json mới về máy</button>
 
-  <h5 class="mt-4">Danh sách câu gốc <small class="text-muted fs-6">(Kéo thả ☰ để đổi vị trí câu)</small>:</h5>
+  <h5 class="mt-4">Danh sách câu gốc:</h5>
   <div id="questionList" class="border p-1 rounded bg-light text-dark" style="max-height: 350px; overflow-y: auto;"></div>
 </div>
 
@@ -177,44 +125,27 @@ body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe 
   </div>
   
   <div class="mb-3 text-center bg-light p-3 rounded dark:bg-secondary">
-    <div id="audioPlayerContainer"><audio id="player" controls class="w-100 mb-2"></audio></div>
-    
-    <div id="ttsPlayerContainer" class="hidden mb-3">
-       <div class="tts-player-wrapper">
-         <button id="ttsPlayBtn" class="btn btn-primary tts-btn" onclick="toggleStudentTTS()">▶</button>
-         <div class="tts-progress-container"><div id="ttsProgressBar" class="tts-progress-bar"></div></div>
-       </div>
-       <div class="small text-muted mt-2">Giọng đọc máy AI chất lượng cao</div>
-    </div>
-
-    <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap mb-2">
-      <button onclick="setSpeed(.5)" class="btn btn-sm btn-outline-primary">x0.5</button>
-      <button onclick="setSpeed(.7)" class="btn btn-sm btn-outline-primary">x0.75</button>
+    <audio id="player" controls class="w-100 mb-2"></audio>
+    <div class="d-flex justify-content-center gap-2 mb-2">
+      <button onclick="setSpeed(.75)" class="btn btn-sm btn-outline-primary">x0.75</button>
       <button onclick="setSpeed(1)" class="btn btn-sm btn-outline-primary">x1.0</button>
-      <button onclick="setSpeed(1.5)" class="btn btn-sm btn-outline-primary">x1.5</button>
-      <span id="spd" class="badge bg-secondary p-2">Tốc độ: x1</span>
-    </div>
-    
-    <div class="d-flex justify-content-center align-items-center gap-2">
-      <label for="repeat" class="m-0 text-nowrap small">Lặp lại:</label>
-      <select id="repeat" class="form-select form-select-sm" style="width: auto;"><option>1</option><option>2</option><option>3</option><option>5</option></select>
-      <button class="btn btn-sm btn-warning" onclick="repeatPlay()">🔂 Phát lặp</button>
+      <button onclick="setSpeed(1.25)" class="btn btn-sm btn-outline-primary">x1.25</button>
     </div>
   </div>
 
   <div class="mb-3">
     <label class="form-label fw-bold">Nội dung bạn nghe được:</label>
-    <textarea id="txt" class="form-control" rows="4" placeholder="Nhập chữ Hán, Pinyin đáp án nghe được..."></textarea>
+    <textarea id="txt" class="form-control" rows="4" placeholder="Nhập đáp án nghe được..."></textarea>
   </div>
   
-  <div class="mb-3 d-flex gap-2 flex-wrap justify-content-between">
+  <div class="mb-3 d-flex gap-2 justify-content-between">
     <div class="d-flex gap-2">
       <button class="btn btn-success" onclick="check()">✔️ Chấm điểm</button>
-      <button class="btn btn-info text-white" onclick="showAns()">👁️ Xem đáp án đúng</button>
+      <button class="btn btn-info text-white" onclick="showAns()">👁️ Xem đáp án</button>
     </div>
     <div class="d-flex gap-2">
-      <button class="btn btn-outline-secondary" onclick="prevLesson()">⬅️ Câu phía trước</button>
-      <button class="btn btn-primary" onclick="nextLesson()">Câu tiếp theo ➡️</button>
+      <button class="btn btn-outline-secondary" onclick="prevLesson()">⬅️ Lùi</button>
+      <button class="btn btn-primary" onclick="nextLesson()">Tiếp ➡️</button>
     </div>
   </div>
 
@@ -226,379 +157,158 @@ body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe 
 <script>
 let database = [];
 let currentTopicIdx = 0, currentQuestionIdx = 0, totalScore = [], currentPlaybackRate = 1;
-let activeQuestions = []; 
-let synth = window.speechSynthesis, chineseVoices = [];
-let isTtsLooping = false, isTtsPlaying = false, ttsCurrentCharIndex = 0, ttsLastBoundaryIndex = 0;  
-let questionIndexToDelete = null;
+let activeQuestions = [];
+let synth = window.speechSynthesis;
 
-// Hàm Tự Động Gọi Lấy Dữ Liệu Từ Đám Mây Netlify/GitHub khi mở trang
 async function fetchCloudData() {
   let searchInput = document.getElementById("lessonSearchInput");
   try {
-    // Gọi trực tiếp file data.json nằm cùng thư mục lưu trữ tĩnh
     let response = await fetch('./data.json?v=' + Date.now());
     if (response.ok) {
       database = await response.json();
-      showToast("☁️ Đồng bộ dữ liệu bài học thành công!", "success");
+      showToast("☁️ Đồng bộ dữ liệu Cloud thành công!", "success");
     } else {
-      // Trường hợp file data.json chưa tồn tại trên hosting
-      database = [{ id: Date.now(), title: "Bài học mẫu số 1 (Chưa cấu hình dữ liệu)", questions: [] }];
+      database = [{ id: Date.now(), title: "Bài mẫu số 1", questions: [] }];
     }
   } catch (err) {
-    console.warn("Chưa có file data.json trên đám mây, khởi tạo bản mẫu.");
-    database = [{ id: Date.now(), title: "Bài học mẫu số 1", questions: [] }];
-  }
-  
-  if (database.length > 0 && database[currentTopicIdx]) {
-    searchInput.value = database[currentTopicIdx].title;
+    database = [{ id: Date.now(), title: "Bài mẫu số 1", questions: [] }];
   }
   searchInput.removeAttribute("disabled");
-  searchInput.placeholder = "🔍 Gõ tìm kiếm hoặc click chọn bài học...";
-  
-  buildSearchDropdown(); 
-  switchTopic(true); 
+  searchInput.placeholder = "🔍 Click chọn bài học...";
+  buildSearchDropdown();
+  switchTopic(true);
   login();
 }
 
-function updateDataAndRender() {
-  renderQuestionsInTeacher();
-  buildSearchDropdown(document.getElementById("lessonSearchInput").value);
-}
-
-// Chạy tải dữ liệu đám mây ngay khi mở web
 window.addEventListener('DOMContentLoaded', fetchCloudData);
 
-// ==========================================
-// ĐIỀU KHIỂN CHỨC NĂNG HỆ THỐNG
-// ==========================================
 function showToast(msg, type = "success") {
   let t = document.getElementById("toastNotice"); t.innerText = msg;
   t.className = `alert alert-${type} show`; t.classList.remove("hidden");
-  setTimeout(() => { t.classList.remove("show"); setTimeout(() => t.classList.add("hidden"), 300); }, 1200);
+  setTimeout(() => { t.classList.remove("show"); }, 1500);
 }
 
-function closeModal(id) { document.getElementById(id).classList.remove("show"); }
-
-function autoResizeTextarea(element) {
-  element.style.height = "auto";
-  element.style.height = element.scrollHeight + "px";
-}
-
-function removeVietnameseTones(str) {
-  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
-  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
-  str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
-  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
-  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
-  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
-  str = str.replace(/đ/g,"d");
-  return str.toLowerCase().trim();
-}
+function autoResizeTextarea(element) { element.style.height = "auto"; element.style.height = element.scrollHeight + "px"; }
 
 function buildSearchDropdown(filterText = "") {
   let dropdownMenu = document.getElementById("searchDropdownMenu");
-  let cleanKeyword = removeVietnameseTones(filterText);
-  let matchesCount = 0;
-  
-  let html = "";
-  database.forEach((t, idx) => {
-    let cleanTitle = removeVietnameseTones(t.title);
-    if (cleanKeyword.length > 0 && !cleanTitle.includes(cleanKeyword)) return;
-    matchesCount++;
-    let activeClass = idx === currentTopicIdx ? "active" : "";
-    html += `<div class="search-result-item ${activeClass}" onclick="selectTopicFromSearch(${idx})">
-              🔹 <strong>${t.title}</strong> <span class="text-muted small">(${t.questions.length} câu)</span>
-            </div>`;
-  });
-
-  if (matchesCount === 0) html = `<div class="p-3 text-muted text-center small">❌ Không tìm thấy bài học nào</div>`;
+  let html = database.map((t, idx) => `
+    <div class="search-result-item ${idx === currentTopicIdx ? 'active' : ''}" onclick="selectTopicFromSearch(${idx})">
+      🔹 <strong>${t.title}</strong> <span class="text-muted small">(${t.questions.length} câu)</span>
+    </div>`).join("");
   dropdownMenu.innerHTML = html;
 }
 
-function showDropdownResults() {
-  let dropdownMenu = document.getElementById("searchDropdownMenu");
-  dropdownMenu.style.display = "block";
-  buildSearchDropdown(document.getElementById("lessonSearchInput").value);
-}
-
-function handleSearchInput(val) { buildSearchDropdown(val); }
-
-function selectTopicFromSearch(idx) {
-  currentTopicIdx = idx;
-  document.getElementById("lessonSearchInput").value = database[idx].title;
-  document.getElementById("searchDropdownMenu").style.display = "none";
-  switchTopic(true); 
-}
-
-document.addEventListener("click", function(e) {
-  let container = document.querySelector(".search-combo-container");
-  if (container && !container.contains(e.target)) document.getElementById("searchDropdownMenu").style.display = "none";
-});
-
-function updateTopicLabel() {
-  let labelContainer = document.getElementById("topicTitleDisplayContainer");
-  let inputEl = document.getElementById("lessonSearchInput");
-  if (currentTopicIdx === null || !database[currentTopicIdx]) {
-    labelContainer.innerHTML = `<span>Đang cấu hình cho bài học:</span> <strong id="teacherCurrentTopicLabel" class="text-danger">Chưa chọn bài học</strong>`;
-    inputEl.value = "";
-  } else {
-    labelContainer.innerHTML = `<span>Đang cấu hình cho bài học:</span> <strong id="teacherCurrentTopicLabel" class="text-danger text-truncate" style="max-width:200px;">${database[currentTopicIdx].title}</strong> <button class="btn btn-link btn-sm p-0 text-decoration-none ms-1" onclick="toggleEditTopicTitle()">✏️</button>`;
-    if (document.activeElement !== inputEl) inputEl.value = database[currentTopicIdx].title;
-  }
-}
-
-function toggleEditTopicTitle() {
-  if (currentTopicIdx === null) return;
-  let labelContainer = document.getElementById("topicTitleDisplayContainer");
-  labelContainer.innerHTML = `<input type="text" id="editTopicTitleInput" class="form-control form-control-sm d-inline-block me-1" value="${database[currentTopicIdx].title}" style="max-width: 220px;"> <button class="btn btn-success btn-sm py-0 px-2 me-1" onclick="saveTopicTitle()">Lưu</button> <button class="btn btn-secondary btn-sm py-0 px-2" onclick="updateTopicLabel()">Hủy</button>`;
-  document.getElementById("editTopicTitleInput").focus();
-}
-
-function saveTopicTitle() {
-  let newTitle = document.getElementById("editTopicTitleInput").value.trim();
-  if (!newTitle) return showToast("Tên bài học không được rỗng!", "danger");
-  database[currentTopicIdx].title = newTitle;
-  updateDataAndRender(); updateTopicLabel(); showToast("✏️ Đã sửa đổi tên bài học!");
-}
-
-function stopAllAudio() {
-  if (window.player) player.pause();
-  if (synth) synth.cancel(); 
-  isTtsLooping = isTtsPlaying = false; ttsCurrentCharIndex = ttsLastBoundaryIndex = 0;
-  if (document.getElementById("ttsPlayBtn")) document.getElementById("ttsPlayBtn").innerText = "▶";
-  if (document.getElementById("ttsProgressBar")) document.getElementById("ttsProgressBar").style.width = "0%";
-}
+function showDropdownResults() { document.getElementById("searchDropdownMenu").style.display = "block"; buildSearchDropdown(); }
+function selectTopicFromSearch(idx) { currentTopicIdx = idx; document.getElementById("lessonSearchInput").value = database[idx].title; document.getElementById("searchDropdownMenu").style.display = "none"; switchTopic(true); }
 
 function switchTopic(shouldShuffle = false) {
-  stopAllAudio(); if(currentTopicIdx === null || !database[currentTopicIdx]) return;
-  if (shouldShuffle) {
-    currentQuestionIdx = 0; totalScore = []; activeQuestions = [...database[currentTopicIdx].questions];
-    for (let i = activeQuestions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1)); [activeQuestions[i], activeQuestions[j]] = [activeQuestions[j], activeQuestions[i]];
-    }
-  } else { activeQuestions = [...database[currentTopicIdx].questions]; }
-  updateTopicLabel(); clearResultUI(); renderQuestionsInTeacher(); loadCurrentQuestion();
-}
-
-function clearResultUI() { document.getElementById("directAnswer").classList.add("hidden"); document.getElementById("result").innerHTML = ""; document.getElementById("txt").value = ""; }
-
-function createNewTopic() {
-  let title = document.getElementById("newTopicTitle").value.trim();
-  if(!title) return showToast("Vui lòng nhập tên bài học!", "danger");
-  database.push({ id: Date.now(), title: title, questions: [] });
-  currentTopicIdx = database.length - 1; document.getElementById("newTopicTitle").value = ""; 
-  updateDataAndRender(); switchTopic(true);
-}
-
-function triggerDeleteTopicModal() {
-  if (currentTopicIdx === null) return showToast("Chưa chọn bài học!", "danger");
-  if (database.length <= 1) return showToast("Cần giữ lại ít nhất 1 bài học!", "danger");
-  document.getElementById("deleteModalBodyText").innerHTML = `Xóa bài học: <strong class="text-danger">"${database[currentTopicIdx].title}"</strong>?`;
-  document.getElementById("deleteConfirmModal").classList.add("show");
-}
-
-function executeDeleteTopic() {
-  if (currentTopicIdx !== null) { database.splice(currentTopicIdx, 1); currentTopicIdx = 0; currentQuestionIdx = 0; updateDataAndRender(); switchTopic(true); }
-  closeModal('deleteConfirmModal');
-}
-
-function speakText(text, options = {}, onboundary = null, onend = null) {
-  if (synth.speaking) synth.cancel(); let u = new SpeechSynthesisUtterance(text);
-  if (chineseVoices.length > 0) { let voice = chineseVoices.find(v => v.name === options.voiceName) || chineseVoices[options.voiceIdx || 0]; if (voice) u.voice = voice; }
-  u.rate = (options.rate || 1) * (options.playbackModifier || 1); u.pitch = options.pitch || 1;
-  if(onboundary) u.onboundary = onboundary; if(onend) u.onend = onend;
-  synth.speak(u); return u;
-}
-
-function addQuestion(isAI) {
-  if (currentTopicIdx === null || !database[currentTopicIdx]) return showToast("Chưa chọn bài học!", "danger");
-  let textarea = document.getElementById("ans"), text = textarea.value.trim();
-  if (!text) return showToast("Vui lòng điền đáp án!", "danger");
-
-  if (isAI) {
-    let vName = chineseVoices.length > 0 ? chineseVoices[document.getElementById("ttsVoiceSelect").value].name : "";
-    database[currentTopicIdx].questions.push({ answer: text, isTTS: true, voiceName: vName, rate: parseFloat(document.getElementById("ttsRate").value), pitch: parseFloat(document.getElementById("ttsPitch").value), audio: "" });
-    textarea.value = ""; textarea.style.height = "auto"; updateDataAndRender(); switchTopic(false); showToast("✨ Thêm câu hỏi AI thành công!");
-  } else {
-    let audioEl = document.getElementById("audio"), f = audioEl.files[0]; if (!f) return showToast("Chọn file âm thanh!", "danger");
-    let r = new FileReader();
-    r.onload = e => {
-      database[currentTopicIdx].questions.push({ answer: text, isTTS: false, audio: e.target.result });
-      textarea.value = ""; textarea.style.height = "auto"; audioEl.value = ""; updateDataAndRender(); switchTopic(false); showToast("➕ Thêm câu hỏi thành công!");
-    };
-    r.readAsDataURL(f);
-  }
-}
-
-function triggerDeleteQuestionModal(qIdx) {
-  questionIndexToDelete = qIdx; document.getElementById("deleteQuestionBodyText").innerText = `Xóa câu: "${database[currentTopicIdx].questions[qIdx].answer}"?`;
-  document.getElementById("deleteQuestionModal").classList.add("show");
-}
-
-function executeDeleteQuestion() {
-  if (questionIndexToDelete !== null && currentTopicIdx !== null) { database[currentTopicIdx].questions.splice(questionIndexToDelete, 1); closeModal('deleteQuestionModal'); updateDataAndRender(); switchTopic(false); showToast("❌ Đã xóa câu hỏi!"); }
-}
-
-function toggleEditQuestionRow(i) {
-  let textContainer = document.getElementById(`q-text-container-${i}`), actionDiv = document.getElementById(`q-action-${i}`);
-  textContainer.classList.remove("one-line-text");
-  textContainer.innerHTML = `<textarea id="edit-input-${i}" class="form-control form-control-sm edit-textarea" rows="1" oninput="autoResizeTextarea(this)">${database[currentTopicIdx].questions[i].answer}</textarea>`;
-  actionDiv.innerHTML = `<button class="btn btn-success btn-sm py-0 px-2 me-1" onclick="saveEditedQuestion(${i})">Lưu</button> <button class="btn btn-secondary btn-sm py-0 px-2" onclick="renderQuestionsInTeacher()">Hủy</button>`;
-  let textarea = document.getElementById(`edit-input-${i}`); textarea.focus(); autoResizeTextarea(textarea);
-}
-
-function saveEditedQuestion(i) {
-  let val = document.getElementById(`edit-input-${i}`).value.trim(); if(!val) return showToast("Nội dung trống!", "danger");
-  database[currentTopicIdx].questions[i].answer = val; updateDataAndRender(); switchTopic(false); showToast("✏️ Đã cập nhật!");
-}
-
-function renderQuestionsInTeacher() {
-  let listDiv = document.getElementById("questionList"); if (currentTopicIdx === null || !database[currentTopicIdx]) { listDiv.innerHTML = "<div class='text-muted p-2'>Chưa chọn bài học.</div>"; return; }
-  let cur = database[currentTopicIdx]; if (!cur.questions || cur.questions.length === 0) { listDiv.innerHTML = "<div class='text-muted p-2'>Bài học trống.</div>"; return; }
-  listDiv.innerHTML = cur.questions.map((q, i) => `
-    <div class="item-flex align-items-center" draggable="true" data-index="${i}" ondragstart="dragSrcIndex = ${i}" ondragover="event.preventDefault()" ondrop="handleDrop(event)">
-      <div class="d-flex align-items-center flex-grow-1 min-w-0 me-2" style="max-width: 75%;">
-        <span class="drag-handle flex-shrink-0">☰</span> <span class="one-line-text flex-grow-1 fw-medium" id="q-text-container-${i}"><strong>Câu ${i+1}:</strong> ${q.answer}</span>
-      </div>
-      <div id="q-action-${i}" class="d-flex flex-shrink-0">
-        <button class="btn btn-warning text-dark btn-sm py-0 px-2 me-1 fw-bold" onclick="toggleEditQuestionRow(${i})">Sửa</button>
-        <button class="btn btn-danger btn-sm py-0 px-2" onclick="triggerDeleteQuestionModal(${i})">Xóa</button>
-      </div>
-    </div>`).join("");
-}
-
-let dragSrcIndex = null;
-function handleDrop(e) {
-  let targetIndex = parseInt(e.currentTarget.getAttribute('data-index'));
-  if (dragSrcIndex !== null && dragSrcIndex !== targetIndex && currentTopicIdx !== null) {
-    let questions = database[currentTopicIdx].questions; let draggedItem = questions.splice(dragSrcIndex, 1)[0];
-    questions.splice(targetIndex, 0, draggedItem); updateDataAndRender(); switchTopic(false);
-  }
-}
-
-function loadCurrentQuestion() {
-  stopAllAudio(); if (currentTopicIdx === null || activeQuestions.length === 0) { document.getElementById("lessonInfo").innerHTML = "Chưa chọn bài học"; if(window.player) player.src = ""; document.getElementById("audioPlayerContainer").classList.remove("hidden"); document.getElementById("ttsPlayerContainer").classList.add("hidden"); return; }
-  document.getElementById("lessonInfo").innerHTML = `Câu ${currentQuestionIdx + 1} / ${activeQuestions.length}`;
-  let q = activeQuestions[currentQuestionIdx]; document.getElementById("audioPlayerContainer").classList.toggle("hidden", q.isTTS); document.getElementById("ttsPlayerContainer").classList.toggle("hidden", !q.isTTS);
-  player.src = q.isTTS ? "" : q.audio; clearResultUI();
-}
-
-function login() { stopAllAudio(); let role = document.getElementById("role").value; document.getElementById("teacher").classList.toggle("hidden", role !== "teacher"); document.getElementById("student").classList.toggle("hidden", role !== "student"); clearResultUI(); }
-
-function populateVoiceList() { if (!synth) return; chineseVoices = synth.getVoices().filter(v => v.lang.toLowerCase().includes('zh')); document.getElementById("ttsVoiceSelect").innerHTML = chineseVoices.length === 0 ? "<option>Không tìm thấy giọng Trung</option>" : chineseVoices.map((v, i) => `<option value="${i}">${v.name}</option>`).join(""); }
-populateVoiceList(); if (synth && synth.onvoiceschanged !== undefined) synth.onvoiceschanged = populateVoiceList;
-
-function previewTTS() { let text = document.getElementById("ans").value.trim(); if (!text) return showToast("Nhập nội dung trước!", "danger"); speakText(text, { voiceIdx: document.getElementById("ttsVoiceSelect").value, rate: parseFloat(document.getElementById("ttsRate").value), pitch: parseFloat(document.getElementById("ttsPitch").value) }); }
-function toggleStudentTTS() { if (isTtsPlaying) { synth.cancel(); isTtsPlaying = false; ttsCurrentCharIndex = ttsLastBoundaryIndex; document.getElementById("ttsPlayBtn").innerText = "▶"; } else { document.getElementById("ttsPlayBtn").innerText = "∥"; isTtsPlaying = true; playStudentTTS(); } }
-
-function playStudentTTS() {
-  let q = activeQuestions[currentQuestionIdx]; if (!q || !q.isTTS) return;
-  let fullText = q.answer, textToSpeak = fullText.substring(ttsCurrentCharIndex); if (textToSpeak.trim() === "") { ttsCurrentCharIndex = 0; textToSpeak = fullText; }
-  return speakText(textToSpeak, { voiceName: q.voiceName, rate: q.rate, pitch: q.pitch, playbackModifier: currentPlaybackRate },
-    (event) => { if (!isTtsPlaying) return; let globalIndex = ttsCurrentCharIndex + event.charIndex; ttsLastBoundaryIndex = globalIndex; document.getElementById("ttsProgressBar").style.width = Math.min(100, Math.round((globalIndex / fullText.length) * 100)) + "%"; },
-    () => { if (isTtsPlaying && !isTtsLooping) { isTtsPlaying = false; ttsCurrentCharIndex = ttsLastBoundaryIndex = 0; document.getElementById("ttsPlayBtn").innerText = "▶"; document.getElementById("ttsProgressBar").style.width = "100%"; setTimeout(() => document.getElementById("ttsProgressBar").style.width = "0%", 250); } }
-  );
-}
-
-function setSpeed(v) { currentPlaybackRate = v; player.playbackRate = v; document.getElementById("spd").innerText = "Tốc độ: x" + v; }
-
-async function repeatPlay() {
-  let n = parseInt(document.getElementById("repeat").value), q = activeQuestions[currentQuestionIdx]; if(!q) return;
-  if (q.isTTS) {
-    if (isTtsPlaying) { stopAllAudio(); return; }
-    synth.cancel(); isTtsLooping = isTtsPlaying = true; document.getElementById("ttsPlayBtn").innerText = "∥";
-    for (let i = 0; i < n && isTtsLooping && isTtsPlaying; i++) {
-      ttsCurrentCharIndex = ttsLastBoundaryIndex = 0; let uhr = playStudentTTS();
-      if(uhr) await new Promise(r => { uhr.onend = r; uhr.onerror = r; });
-      await new Promise(r => setTimeout(r, 800));
-    }
-    stopAllAudio();
-  } else { for (let i = 0; i < n; i++) { player.currentTime = 0; try { await player.play(); await new Promise(r => player.onended = r); } catch(e) { break; } } }
-}
-
-function check() {
-  let q = activeQuestions[currentQuestionIdx]; if (!q) return;
-  let userRaw = document.getElementById("txt").value;
-  let cleanString = (str) => { if (!str) return ""; return str.toLowerCase().replace(/\s+/g, ' ').trim(); };
-  let cleanAnswer = cleanString(q.answer), cleanUser = cleanString(userRaw);
-  if (cleanAnswer.length === 0) { document.getElementById("result").innerHTML = `<div class="alert alert-warning mt-2">Hệ thống chưa thiết lập đáp án cho câu này!</div>`; return; }
-
-  let isChinese = /[\u4e00-\u9fa5]/.test(cleanAnswer);
-  let awTokens = isChinese ? cleanAnswer.split("") : cleanAnswer.split(" ").filter(x => x !== "");
-  let uwTokens = isChinese ? cleanUser.split("") : cleanUser.split(" ").filter(x => x !== "");
-  let m = awTokens.length, n = uwTokens.length;
-  let dp = Array(m + 1).fill().map(() => Array(n + 1).fill(0));
-  for (let i = 0; i <= m; i++) dp[i][0] = i;
-  for (let j = 0; j <= n; j++) dp[0][j] = j;
-
-  for (let i = 1; i <= m; i++) {
-    for (let j = 1; j <= n; j++) {
-      if (awTokens[i - 1] === uwTokens[j - 1]) dp[i][j] = dp[i - 1][j - 1];
-      else dp[i][j] = Math.min(dp[i - 1][j - 1] + 1, dp[i - 1][j] + 1, dp[i][j - 1] + 1);
-    }
-  }
-
-  let i = m, j = n, steps = [];
-  while (i > 0 || j > 0) {
-    if (i > 0 && j > 0 && awTokens[i - 1] === uwTokens[j - 1]) { steps.unshift({ type: 'correct', val: uwTokens[j - 1] }); i--; j--; }
-    else if (i > 0 && j > 0 && dp[i][j] === dp[i - 1][j - 1] + 1) { steps.unshift({ type: 'substitution', val: uwTokens[j - 1], correctVal: awTokens[i - 1] }); i--; j--; }
-    else if (j > 0 && (i === 0 || dp[i][j] === dp[i][j - 1] + 1)) { steps.unshift({ type: 'extra', val: uwTokens[j - 1] }); j--; }
-    else { steps.unshift({ type: 'missing', val: awTokens[i - 1] }); i--; }
-  }
-
-  let correctCount = steps.filter(s => s.type === 'correct').length;
-  let score = Math.max(0, Math.min(100, Math.round((correctCount / m) * 100))); totalScore[currentQuestionIdx] = score;
-
-  let filteredHtml = [], joinChar = isChinese ? "" : " ";
-  steps.forEach(step => {
-    let displayVal = step.val === " " ? "⎵" : step.val;
-    if (step.type === 'correct') filteredHtml.push(`<span class='correct'>${displayVal}</span>`);
-    else if (step.type === 'substitution') filteredHtml.push(`<span class='wrong'>${displayVal}</span><span class='missing'>[Đúng: ${step.correctVal}]</span>`);
-    else if (step.type === 'extra') filteredHtml.push(`<span class='wrong'>${displayVal}</span>`);
-    else if (step.type === 'missing') filteredHtml.push(`<span class='missing'>[Thiếu: ${step.val}]</span>`);
-  });
-
-  document.getElementById("result").innerHTML = `<div class="alert alert-secondary mt-2"><h4>Kết quả chấm điểm: <span class="${score >= 80 ? 'text-success' : 'text-danger'}">${score}%</span></h4><div class="mt-3 d-flex flex-wrap align-items-center" style="line-height: 2.5;">${filteredHtml.join(joinChar)}</div></div>`;
-}
-
-function showAns() {
-  let q = activeQuestions[currentQuestionIdx]; if (!q) return;
-  document.getElementById("directAnswer").innerHTML = `<strong>🎯 Đáp án đúng:</strong> <span class="text-danger">${q.answer}</span>`;
-  document.getElementById("directAnswer").classList.remove("hidden");
-}
-
-function prevLesson() { if (currentQuestionIdx > 0) { currentQuestionIdx--; loadCurrentQuestion(); } }
-function nextLesson() {
-  if (!activeQuestions.length) return; currentQuestionIdx++;
-  if (currentQuestionIdx >= activeQuestions.length) {
-    let valid = totalScore.filter(s => s !== undefined); let avg = valid.length ? Math.round(valid.reduce((a, b) => a + b, 0) / valid.length) : 0;
-    document.getElementById("modalBodyText").innerHTML = `Bạn đã hoàn thành bài học.<br>Điểm trung bình: <span class="text-primary fw-bold">${avg}%</span>`;
-    document.getElementById("endLessonModal").classList.add("show"); currentQuestionIdx = 0; totalScore = [];
-  }
+  if(!database[currentTopicIdx]) return;
+  document.getElementById("teacherCurrentTopicLabel").innerText = database[currentTopicIdx].title;
+  activeQuestions = [...database[currentTopicIdx].questions];
+  currentQuestionIdx = 0;
+  renderQuestionsInTeacher();
   loadCurrentQuestion();
 }
 
-function closeEndModal() { closeModal('endLessonModal'); switchTopic(true); }
+function addQuestion(isAI) {
+  let text = document.getElementById("ans").value.trim();
+  if (!text) return showToast("Vui lòng điền đáp án!", "danger");
 
-// Hàm xuất dữ liệu ra file tên chính xác "data.json" để đồng bộ
+  if (isAI) {
+    database[currentTopicIdx].questions.push({ answer: text, isTTS: true, audio: "" });
+  } else {
+    let url = document.getElementById("audioUrlInput").value.trim();
+    if (!url) return showToast("Vui lòng dán link file âm thanh!", "danger");
+    database[currentTopicIdx].questions.push({ answer: text, isTTS: false, audio: url });
+    document.getElementById("audioUrlInput").value = "";
+  }
+  document.getElementById("ans").value = "";
+  renderQuestionsInTeacher();
+  switchTopic(false);
+  showToast("➕ Đã thêm câu hỏi!");
+}
+
+function renderQuestionsInTeacher() {
+  let listDiv = document.getElementById("questionList");
+  let cur = database[currentTopicIdx];
+  if (!cur || !cur.questions.length) { listDiv.innerHTML = "<div class='text-muted p-2'>Trống.</div>"; return; }
+  listDiv.innerHTML = cur.questions.map((q, i) => `
+    <div class="item-flex">
+      <span class="one-line-text"><strong>Câu ${i+1}:</strong> ${q.answer} (${q.isTTS ? 'Giọng AI' : 'File Link'})</span>
+      <button class="btn btn-danger btn-sm py-0" onclick="database[currentTopicIdx].questions.splice(${i},1); renderQuestionsInTeacher(); switchTopic(false);">Xóa</button>
+    </div>`).join("");
+}
+
+function loadCurrentQuestion() {
+  if (!activeQuestions.length) { document.getElementById("lessonInfo").innerHTML = "Trống"; return; }
+  document.getElementById("lessonInfo").innerHTML = `Câu ${currentQuestionIdx + 1} / ${activeQuestions.length}`;
+  let q = activeQuestions[currentQuestionIdx];
+  
+  if (q.isTTS) {
+    // Kịch bản đọc phát âm AI tự động nếu chọn AI
+    player.src = "";
+    player.onplay = () => { synth.cancel(); let u = new SpeechSynthesisUtterance(q.answer); u.lang = 'zh-CN'; u.rate = currentPlaybackRate; synth.speak(u); };
+  } else {
+    player.src = q.audio;
+    player.onplay = null;
+  }
+  document.getElementById("txt").value = "";
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("directAnswer").classList.add("hidden");
+}
+
+function setSpeed(v) { currentPlaybackRate = v; player.playbackRate = v; }
+function prevLesson() { if (currentQuestionIdx > 0) { currentQuestionIdx--; loadCurrentQuestion(); } }
+function nextLesson() {
+  currentQuestionIdx++;
+  if (currentQuestionIdx >= activeQuestions.length) {
+    document.getElementById("modalBodyText").innerText = "Bạn đã duyệt hết các câu hỏi trong bài này!";
+    document.getElementById("endLessonModal").classList.add("show");
+    currentQuestionIdx = 0;
+  }
+  loadCurrentQuestion();
+}
+function closeEndModal() { document.getElementById("endLessonModal").classList.remove("show"); loadCurrentQuestion(); }
+
+function check() {
+  let q = activeQuestions[currentQuestionIdx];
+  let user = document.getElementById("txt").value.trim().toLowerCase();
+  let ans = q.answer.trim().toLowerCase();
+  if (user === ans) {
+    document.getElementById("result").innerHTML = `<div class="alert alert-success">🎉 Chính xác hoàn toàn! (100%)</div>`;
+  } else {
+    document.getElementById("result").innerHTML = `<div class="alert alert-danger">❌ Chưa chính xác, hãy thử lại hoặc xem đáp án.</div>`;
+  }
+}
+
+function showAns() {
+  let q = activeQuestions[currentQuestionIdx];
+  document.getElementById("directAnswer").innerHTML = `🎯 Đáp án đúng: <span class="text-danger">${q.answer}</span>`;
+  document.getElementById("directAnswer").classList.remove("hidden");
+}
+
+function createNewTopic() {
+  let title = document.getElementById("newTopicTitle").value.trim();
+  if(!title) return;
+  database.push({ id: Date.now(), title: title, questions: [] });
+  currentTopicIdx = database.length - 1;
+  document.getElementById("newTopicTitle").value = "";
+  buildSearchDropdown();
+  switchTopic(true);
+}
+
+function login() {
+  let role = document.getElementById("role").value;
+  document.getElementById("teacher").classList.toggle("hidden", role !== "teacher");
+  document.getElementById("student").classList.toggle("hidden", role !== "student");
+}
+
 function exportJSON() {
   let a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([JSON.stringify(database, null, 2)], { type: "application/json" }));
   a.download = "data.json"; a.click();
 }
-
-document.addEventListener("keydown", e => {
-  if(["TEXTAREA", "INPUT"].includes(document.activeElement.tagName)) return;
-  if (currentTopicIdx === null || !activeQuestions[currentQuestionIdx]) return;
-  let isTTS = !!activeQuestions[currentQuestionIdx]?.isTTS;
-  if (e.code === "Space") { e.preventDefault(); if (isTTS) toggleStudentTTS(); else (player.paused ? player.play() : player.pause()); }
-  if (e.key === "ArrowLeft" && !isTTS) player.currentTime = Math.max(0, player.currentTime - 3);
-  if (e.key === "ArrowRight" && !isTTS) player.currentTime += 3;
-  if (["ArrowUp", "ArrowDown"].includes(e.key)) {
-    e.preventDefault(); currentPlaybackRate = Math.max(.5, Math.min(2, Math.round((currentPlaybackRate + (e.key === "ArrowUp" ? 0.1 : -0.1)) * 10) / 10));
-    player.playbackRate = currentPlaybackRate; document.getElementById("spd").innerText = "Tốc độ: x" + currentPlaybackRate;
-  }
-});
 </script>
 </body>
 </html>
