@@ -155,9 +155,9 @@ body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe 
     </div>
     
     <div class="mb-3">
-      <label class="form-label fw-bold">Hoặc chọn File âm thanh thủ công từ máy tính:</label>
-      <input type="file" id="audio" accept="audio/*" class="form-control">
-      <button class="btn btn-success btn-sm mt-2" onclick="addQuestion(false)">➕ Thêm bằng File thủ công</button>
+      <label class="form-label fw-bold">Hoặc chèn Link liên kết đến audio (.mp3):</label>
+      <input type="text" id="audioLink" class="form-control" placeholder="Dán link audio tại đây (ví dụ: https://.../audio.mp3)">
+      <button class="btn btn-success btn-sm mt-2" onclick="addQuestion(false)">➕ Thêm bằng Link</button>
     </div>
   </div>
   
@@ -231,21 +231,17 @@ let synth = window.speechSynthesis, chineseVoices = [];
 let isTtsLooping = false, isTtsPlaying = false, ttsCurrentCharIndex = 0, ttsLastBoundaryIndex = 0;  
 let questionIndexToDelete = null;
 
-// Hàm Tự Động Gọi Lấy Dữ Liệu Từ Đám Mây Netlify/GitHub khi mở trang
 async function fetchCloudData() {
   let searchInput = document.getElementById("lessonSearchInput");
   try {
-    // Gọi trực tiếp file data.json nằm cùng thư mục lưu trữ tĩnh
     let response = await fetch('./data.json?v=' + Date.now());
     if (response.ok) {
       database = await response.json();
       showToast("☁️ Đồng bộ dữ liệu bài học thành công!", "success");
     } else {
-      // Trường hợp file data.json chưa tồn tại trên hosting
-      database = [{ id: Date.now(), title: "Bài học mẫu số 1 (Chưa cấu hình dữ liệu)", questions: [] }];
+      database = [{ id: Date.now(), title: "Bài học mẫu số 1", questions: [] }];
     }
   } catch (err) {
-    console.warn("Chưa có file data.json trên đám mây, khởi tạo bản mẫu.");
     database = [{ id: Date.now(), title: "Bài học mẫu số 1", questions: [] }];
   }
   
@@ -265,12 +261,8 @@ function updateDataAndRender() {
   buildSearchDropdown(document.getElementById("lessonSearchInput").value);
 }
 
-// Chạy tải dữ liệu đám mây ngay khi mở web
 window.addEventListener('DOMContentLoaded', fetchCloudData);
 
-// ==========================================
-// ĐIỀU KHIỂN CHỨC NĂNG HỆ THỐNG
-// ==========================================
 function showToast(msg, type = "success") {
   let t = document.getElementById("toastNotice"); t.innerText = msg;
   t.className = `alert alert-${type} show`; t.classList.remove("hidden");
@@ -420,13 +412,10 @@ function addQuestion(isAI) {
     database[currentTopicIdx].questions.push({ answer: text, isTTS: true, voiceName: vName, rate: parseFloat(document.getElementById("ttsRate").value), pitch: parseFloat(document.getElementById("ttsPitch").value), audio: "" });
     textarea.value = ""; textarea.style.height = "auto"; updateDataAndRender(); switchTopic(false); showToast("✨ Thêm câu hỏi AI thành công!");
   } else {
-    let audioEl = document.getElementById("audio"), f = audioEl.files[0]; if (!f) return showToast("Chọn file âm thanh!", "danger");
-    let r = new FileReader();
-    r.onload = e => {
-      database[currentTopicIdx].questions.push({ answer: text, isTTS: false, audio: e.target.result });
-      textarea.value = ""; textarea.style.height = "auto"; audioEl.value = ""; updateDataAndRender(); switchTopic(false); showToast("➕ Thêm câu hỏi thành công!");
-    };
-    r.readAsDataURL(f);
+    let audioLink = document.getElementById("audioLink").value.trim();
+    if (!audioLink) return showToast("Vui lòng nhập link audio!", "danger");
+    database[currentTopicIdx].questions.push({ answer: text, isTTS: false, audio: audioLink });
+    textarea.value = ""; textarea.style.height = "auto"; document.getElementById("audioLink").value = ""; updateDataAndRender(); switchTopic(false); showToast("➕ Thêm câu hỏi thành công!");
   }
 }
 
@@ -480,7 +469,8 @@ function loadCurrentQuestion() {
   stopAllAudio(); if (currentTopicIdx === null || activeQuestions.length === 0) { document.getElementById("lessonInfo").innerHTML = "Chưa chọn bài học"; if(window.player) player.src = ""; document.getElementById("audioPlayerContainer").classList.remove("hidden"); document.getElementById("ttsPlayerContainer").classList.add("hidden"); return; }
   document.getElementById("lessonInfo").innerHTML = `Câu ${currentQuestionIdx + 1} / ${activeQuestions.length}`;
   let q = activeQuestions[currentQuestionIdx]; document.getElementById("audioPlayerContainer").classList.toggle("hidden", q.isTTS); document.getElementById("ttsPlayerContainer").classList.toggle("hidden", !q.isTTS);
-  player.src = q.isTTS ? "" : q.audio; clearResultUI();
+  if (!q.isTTS) player.src = q.audio;
+  clearResultUI();
 }
 
 function login() { stopAllAudio(); let role = document.getElementById("role").value; document.getElementById("teacher").classList.toggle("hidden", role !== "teacher"); document.getElementById("student").classList.toggle("hidden", role !== "student"); clearResultUI(); }
@@ -580,7 +570,6 @@ function nextLesson() {
 
 function closeEndModal() { closeModal('endLessonModal'); switchTopic(true); }
 
-// Hàm xuất dữ liệu ra file tên chính xác "data.json" để đồng bộ
 function exportJSON() {
   let a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([JSON.stringify(database, null, 2)], { type: "application/json" }));
