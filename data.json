@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1782196778395,
+    "title": "Bài học mẫu số 1",
+    "questions": []
+  },
+  {
+    "id": 1782196860618,
+    "title": "HSK4-B1.1",
+    "questions": [
+      {
+        "answer": "听说你男朋友李进跟你是一个学校的，是你同学吗？\n是的，他学的是新闻，我学的是法律，我和他不是一个班。\n那你们俩是怎么认识的？\n我们是在一次足球比赛中认识的。我们班跟他们班比赛，他一个人踢进两个球，我对他印象很深，后来就慢慢熟悉了。\n你为什么喜欢他？\n他不仅足球踢得好，性格也不错。",
+        "isTTS": false,
+        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/1.1.mp3"
+      },
+      {
+        "answer": "李老师，我下个月五号就要结婚了。\n你是在开玩笑吧？你们不是才认识一个月？\n虽然我们认识的时间不长，但我从来没这么快乐过。\n两个人在一起，最好能有共同的兴趣和爱好。\n我们有很多共同的爱好，经常一起打球、唱歌、做菜。\n看来你真的找到适合你的人了。祝你们幸福！",
+        "isTTS": false,
+        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/HSK4%20-%20B1.2%20.mp3"
+      }
+    ]
+  },
+  {
+    "id": 1782197001372,
+    "title": "53D",
+    "questions": [
+      {
+        "answer": "他虽然不是在这儿出生的，但却是在这儿长大的。他三岁跟父亲母亲一起来到这儿，就再也没离开过。因此，他对这个地方感情很深。\n★ 他刚来这儿不久。",
+        "isTTS": false,
+        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/1.1.mp3"
+      },
+      {
+        "answer": "我爸爸是一位记者，他总是告诉我，做记者既要及时地报道社会上发生的事情，也要保证新闻的准确性。 \n★ 他父亲是记者。",
+        "isTTS": false,
+        "audio": "https://github.com/huyen549301-ship-it/chuadiec_tiengtrung/raw/refs/heads/main/audio/1.2.mp3"
+      }
+    ]
+  }
+]
