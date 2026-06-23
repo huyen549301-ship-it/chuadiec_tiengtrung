@@ -88,8 +88,11 @@ body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe 
       <input type="text" id="newTopicTitle" class="form-control" placeholder="Nhập tên bài học mới...">
       <button class="btn btn-primary" onclick="createNewTopic()">➕ Tạo Bài Mới</button>
     </div>
-    <div class="small text-muted mt-1">
-      Đang cấu hình: <strong id="teacherCurrentTopicLabel" class="text-danger">Chưa chọn</strong>
+    <div class="d-flex justify-content-between align-items-center mt-2">
+      <div class="small text-muted">
+        Đang cấu hình: <strong id="teacherCurrentTopicLabel" class="text-danger">Chưa chọn</strong>
+      </div>
+      <button id="deleteTopicBtn" class="btn btn-outline-danger btn-sm" onclick="deleteCurrentTopic()">❌ Xóa hẳn bài học này</button>
     </div>
   </div>
 
@@ -99,7 +102,7 @@ body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe 
   </div>
 
   <div class="card p-3 mb-3 bg-white text-dark border-primary">
-    <h6 class="fw-bold text-primary">Phương thức: Dán link file âm thanh tự chọn (Khuyên dùng - File siêu nhẹ)</h6>
+    <h6 class="fw-bold text-primary">Phương thức: Dán link file âm thanh tự chọn (File siêu nhẹ)</h6>
     <input type="text" id="audioUrlInput" class="form-control" placeholder="Dán link .mp3 vào đây (Ví dụ: https://tenweb.com/audio1.mp3)">
     <button class="btn btn-primary btn-sm mt-2" onclick="addQuestion(false)">➕ Thêm bằng Link Âm Thanh</button>
   </div>
@@ -156,7 +159,7 @@ body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe 
 
 <script>
 let database = [];
-let currentTopicIdx = 0, currentQuestionIdx = 0, totalScore = [], currentPlaybackRate = 1;
+let currentTopicIdx = 0, currentQuestionIdx = 0, currentPlaybackRate = 1;
 let activeQuestions = [];
 let synth = window.speechSynthesis;
 
@@ -171,6 +174,9 @@ async function fetchCloudData() {
       database = [{ id: Date.now(), title: "Bài mẫu số 1", questions: [] }];
     }
   } catch (err) {
+    database = [{ id: Date.now(), title: "Bài mẫu số 1", questions: [] }];
+  }
+  if (!database || database.length === 0) {
     database = [{ id: Date.now(), title: "Bài mẫu số 1", questions: [] }];
   }
   searchInput.removeAttribute("disabled");
@@ -192,18 +198,36 @@ function autoResizeTextarea(element) { element.style.height = "auto"; element.st
 
 function buildSearchDropdown(filterText = "") {
   let dropdownMenu = document.getElementById("searchDropdownMenu");
-  let html = database.map((t, idx) => `
-    <div class="search-result-item ${idx === currentTopicIdx ? 'active' : ''}" onclick="selectTopicFromSearch(${idx})">
+  let list = database;
+  if(filterText) {
+    list = database.filter(t => t.title.toLowerCase().includes(filterText.toLowerCase()));
+  }
+  let html = list.map((t) => {
+    let originalIdx = database.indexOf(t);
+    return `
+    <div class="search-result-item ${originalIdx === currentTopicIdx ? 'active' : ''}" onclick="selectTopicFromSearch(${originalIdx})">
       🔹 <strong>${t.title}</strong> <span class="text-muted small">(${t.questions.length} câu)</span>
-    </div>`).join("");
-  dropdownMenu.innerHTML = html;
+    </div>`;
+  }).join("");
+  dropdownMenu.innerHTML = html || "<div class='p-2 text-muted'>Không tìm thấy bài học phù hợp</div>";
 }
 
-function showDropdownResults() { document.getElementById("searchDropdownMenu").style.display = "block"; buildSearchDropdown(); }
+function showDropdownResults() { document.getElementById("searchDropdownMenu").style.display = "block"; buildSearchDropdown(document.getElementById("lessonSearchInput").value); }
+function handleSearchInput(val) { buildSearchDropdown(val); }
 function selectTopicFromSearch(idx) { currentTopicIdx = idx; document.getElementById("lessonSearchInput").value = database[idx].title; document.getElementById("searchDropdownMenu").style.display = "none"; switchTopic(true); }
 
+// Đóng dropdown khi click ra ngoài
+document.addEventListener("click", function(e) {
+  if (!e.target.closest(".search-combo-container")) {
+    document.getElementById("searchDropdownMenu").style.display = "none";
+  }
+});
+
 function switchTopic(shouldShuffle = false) {
-  if(!database[currentTopicIdx]) return;
+  if(!database[currentTopicIdx]) {
+    if(database.length > 0) { currentTopicIdx = 0; } else { return; }
+  }
+  document.getElementById("lessonSearchInput").value = database[currentTopicIdx].title;
   document.getElementById("teacherCurrentTopicLabel").innerText = database[currentTopicIdx].title;
   activeQuestions = [...database[currentTopicIdx].questions];
   currentQuestionIdx = 0;
@@ -240,13 +264,26 @@ function renderQuestionsInTeacher() {
     </div>`).join("");
 }
 
+function deleteCurrentTopic() {
+  if(database.length <= 1) {
+    return showToast("⚠️ Phải giữ lại ít nhất 1 bài học, không thể xóa hết sạch bài!", "danger");
+  }
+  if(confirm(`Bạn có chắc chắn muốn XÓA HOÀN TOÀN bài học: "${database[currentTopicIdx].title}" không?\nHành động này không thể hoàn tác.`)) {
+    database.splice(currentTopicIdx, 1);
+    showToast("❌ Đã xóa bài học thành công!");
+    currentTopicIdx = 0;
+    buildSearchDropdown();
+    switchTopic(true);
+  }
+}
+
 function loadCurrentQuestion() {
-  if (!activeQuestions.length) { document.getElementById("lessonInfo").innerHTML = "Trống"; return; }
+  let player = document.getElementById("player");
+  if (!activeQuestions.length) { document.getElementById("lessonInfo").innerHTML = "Trống"; player.src = ""; return; }
   document.getElementById("lessonInfo").innerHTML = `Câu ${currentQuestionIdx + 1} / ${activeQuestions.length}`;
   let q = activeQuestions[currentQuestionIdx];
   
   if (q.isTTS) {
-    // Kịch bản đọc phát âm AI tự động nếu chọn AI
     player.src = "";
     player.onplay = () => { synth.cancel(); let u = new SpeechSynthesisUtterance(q.answer); u.lang = 'zh-CN'; u.rate = currentPlaybackRate; synth.speak(u); };
   } else {
@@ -258,7 +295,7 @@ function loadCurrentQuestion() {
   document.getElementById("directAnswer").classList.add("hidden");
 }
 
-function setSpeed(v) { currentPlaybackRate = v; player.playbackRate = v; }
+function setSpeed(v) { currentPlaybackRate = v; document.getElementById("player").playbackRate = v; }
 function prevLesson() { if (currentQuestionIdx > 0) { currentQuestionIdx--; loadCurrentQuestion(); } }
 function nextLesson() {
   currentQuestionIdx++;
