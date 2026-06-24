@@ -312,6 +312,58 @@
     ]
   },
   {
+    "id": 1782305717158,
+    "title": "HSK3-B7",
+    "questions": [
+      {
+        "answer": "那个漂亮的新同事是谁？\n那是小丽。\n她刚来北京吗？\n不，她在北京工作三年了。\n以前她在哪儿工作？\n她在银行工作了两年以后来的我们公司。",
+        "isTTS": false,
+        "audio": "https://www.blcup.com/File/Res3/4f298246-9c97-47b3-92a2-70dbed67f3dc.mp3"
+      },
+      {
+        "answer": "我跟小丽下个月结婚，到时候欢迎你来。\n什么？结婚？\n对啊，突然吗？\n你们不是刚认识吗？\n我跟她认识都五年了。\n你跟她结婚，那我怎么办啊？",
+        "isTTS": false,
+        "audio": "https://www.blcup.com/File/Res3/a76c029d-2528-40fe-a176-7635ecd58755.mp3"
+      },
+      {
+        "answer": "周末你跟小丽去哪儿玩儿了？\n我们去唱歌了。\n你们唱了多久？\n我们唱了两个小时歌， 晚上还去听音乐会了。\n你们都对音乐感兴趣吗？\n她对音乐感兴趣，我对她更感兴趣。",
+        "isTTS": false,
+        "audio": "https://www.blcup.com/File/Res3/86dbf4d1-b4fa-4503-9c3d-1f5d9d49d4a6.mp3"
+      },
+      {
+        "answer": "你看看手表，怎么迟到了？\n没迟到啊。\n你不是说七点半来接我吗？你迟到了一刻钟。      \n现在不是七点半吗？\n已经差一刻八点了！我都在这儿坐了半个小时了。\n不是我迟到了，是你的表快了一刻钟。",
+        "isTTS": false,
+        "audio": "https://www.blcup.com/File/Res3/24e293d7-91a0-4e6e-8d63-becdfc2a0b38.mp3"
+      }
+    ]
+  },
+  {
+    "id": 1782305382149,
+    "title": "HSK3-B8",
+    "questions": [
+      {
+        "answer": "听说你下个星期就要回国了？\n是啊，真不想离开北京。\n我下星期不在北京，不能去机场送你了。\n没关系，你忙吧。\n这个小熊猫送给你，欢迎你以后再到中国来。\n谢谢，希望以后能再见面。",
+        "isTTS": false,
+        "audio": "https://www.blcup.com/File/Res3/5ac4e1b1-d579-4b6e-abfc-11c280f034c3.mp3"
+      },
+      {
+        "answer": "快五年了，你几乎没变化。\n谁说的？我胖了，以前的衣服都不能穿了。\n健康最重要，胖瘦没关系。      \n是呀，想吃什么就吃什么。\n你做饭还是周明做饭？\n我做，我想吃什么就做什么，想吃多少就做多少。",
+        "isTTS": false,
+        "audio": "https://www.blcup.com/File/Res3/fe03fbd7-83c5-495d-ae4f-dfd0d273ba42.mp3"
+      },
+      {
+        "answer": "听说你最近打算买房子？\n是，昨天去看了看，今天又去看了看，明天还要再去看看。\n都不满意吗？\n一个没有电梯，不方便。一个有电梯，但是在二十层。\n二十层怎么了？\n太高了，往下看多害怕啊！",
+        "isTTS": false,
+        "audio": "https://www.blcup.com/File/Res3/0dd800c5-9416-4574-805e-725a520fd56a.mp3"
+      },
+      {
+        "answer": "小刚，我们坐哪儿？\n你坐哪儿我就坐哪儿。\n坐这儿吧，这儿安静。你想喝什么饮料。      \n你喝什么我就喝什么。\n喝可乐吧，你等我一会儿，我马上回来。\n小丽，你去哪儿？你去哪儿我就去哪儿。\n我去洗手间。",
+        "isTTS": false,
+        "audio": "https://www.blcup.com/File/Res3/4d9ee952-191c-46b4-822c-3507efaaac22.mp3"
+      }
+    ]
+  },
+  {
     "id": 1782204564086,
     "title": "HSK4-B2",
     "questions": [
