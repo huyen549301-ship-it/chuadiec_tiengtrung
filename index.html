@@ -1,593 +1,251 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Chữa điếc tiếng Trung</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSK2 第4课 自学课件 · 这个工作是他帮我介绍的</title>
 <style>
-body{padding:20px; transition: background 0.3s, color 0.3s; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-.dark{background:#1e1e1e;color:#eee}
-.dark .card {background:#2d2d2d; color:#eee; border-color: #444;}
-.dark .form-control {background:#2d2d2d; color:#eee; border-color: #555;}
-.dark .form-control::placeholder {color: #888;}
-
-.correct{background:#d4edda; color:#155724; padding:4px 8px; border-radius:6px; margin: 0 3px; display: inline-block; font-weight: 500;}
-.wrong{background:#f8d7da; color:#721c24; padding:4px 8px; border-radius:6px; margin: 0 3px; display: inline-block; text-decoration: line-through; font-weight: 500;}
-.missing{background:#fff3cd; color:#856404; padding:4px 8px; border-radius:6px; margin: 0 3px; display: inline-block; border: 2px dashed #ffeeba; font-weight: 500;}
-
-.hidden{display:none}
-.item-flex {display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 8px 10px;}
-.dark .item-flex {border-bottom: 1px solid #444;}
-.item-flex.dragging {opacity: 0.5; background: #e9ecef;}
-.drag-handle {cursor: grab; margin-right: 10px; color: #ccc; font-size: 18px;}
-
-#ans, .edit-textarea { resize: none; overflow-y: auto; min-height: 40px; max-height: 125px; }
-.one-line-text { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-.tts-player-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; max-width: 500px; margin: 0 auto; background: rgba(0,0,0,0.03); padding: 10px 20px; border-radius: 30px; }
-.dark .tts-player-wrapper { background: rgba(255,255,255,0.05); }
-.tts-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.tts-progress-container { flex-grow: 1; height: 8px; background: #e0e0e0; border-radius: 4px; position: relative; overflow: hidden; }
-.dark .tts-progress-container { background: #444; }
-.tts-progress-bar { width: 0%; height: 100%; background: #0d6efd; border-radius: 4px; transition: width 0.05s linear; }
-
-#toastNotice { position: fixed; top: 20px; right: 20px; z-index: 9999; min-width: 250px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: opacity 0.3s; opacity: 0; pointer-events: none; }
-#toastNotice.show { opacity: 1; }
-
-.custom-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
-.custom-modal-overlay.show { opacity: 1; pointer-events: auto; }
-.custom-modal-content { background: white; padding: 25px; border-radius: 15px; max-width: 450px; width: 90%; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transform: scale(0.8); transition: transform 0.25s; }
-.dark .custom-modal-content { background: #2d2d2d; color: #eee; }
-.custom-modal-overlay.show .custom-modal-content { transform: scale(1); }
-
-.search-combo-container { position: relative; width: 100%; }
-.search-results-dropdown { position: absolute; top: 100%; left: 0; right: 0; z-index: 1050; max-height: 250px; overflow-y: auto; background: #fff; border: 1px solid #ced4da; border-radius: 0 0 6px 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); display: none; }
-.dark .search-results-dropdown { background: #2d2d2d; border-color: #555; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
-.search-result-item { padding: 10px 12px; cursor: pointer; border-bottom: 1px solid #f1f1f1; transition: background 0.2s; text-align: left; }
-.dark .search-result-item { border-bottom: 1px solid #444; }
-.search-result-item:last-child { border-bottom: none; }
-.search-result-item:hover, .search-result-item.active { background: #e9ecef; }
-.dark .search-result-item:hover, .dark .search-result-item.active { background: #3d3d3d; }
+  :root{ --green:#2E8B6E; --dgreen:#1C5E4A; --blue:#4E96B5; --dblue:#37718B; --lblue:#E4F2F8; --lgreen:#E9F4F0; --red:#C0392B; --dark:#333; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Microsoft YaHei","Segoe UI",sans-serif;color:var(--dark);background:#f4f8f7;line-height:1.65}
+  .topbar{position:sticky;top:0;background:var(--green);color:#fff;padding:10px 16px;display:flex;gap:14px;flex-wrap:wrap;z-index:99;font-size:14px}
+  .topbar a{color:#DFF2EC;text-decoration:none}.topbar a:hover{color:#fff}
+  .hero{background:var(--green);color:#fff;text-align:center;padding:40px 20px}
+  .hero h1{font-size:28px;margin:8px 0}.hero .vi{font-style:italic;color:#CFE8E0;font-size:16px;margin-top:6px}
+  .hero .badge{display:inline-block;background:var(--blue);color:#fff;padding:4px 14px;border-radius:20px;font-size:14px}
+  main{max-width:860px;margin:0 auto;padding:20px 16px 60px}
+  section{margin-top:36px}
+  h2.sec{background:var(--green);color:#fff;padding:10px 18px;border-left:6px solid var(--blue);border-radius:0 8px 8px 0;font-size:21px}
+  .note{background:var(--lblue);border-radius:10px;padding:12px 16px;margin-top:12px;font-size:15px}
+  .cardgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:14px}
+  .flip{perspective:800px;height:210px;cursor:pointer}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+  .flip.flipped .flip-inner{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+  .front{background:#fff;border:2px solid var(--green)}
+  .front .zi{font-size:32px;font-weight:bold;color:var(--green)}
+  .front .py{color:#888;font-size:17px;margin-top:4px}
+  .back{background:var(--lgreen);transform:rotateY(180deg)}
+  .back .vi{color:var(--dblue);font-size:19px;font-weight:bold}
+  .back .ex{font-size:17px;margin-top:10px;color:var(--dark);font-weight:bold}
+  .speakbtn{background:var(--green);color:#fff;border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:15px;margin-top:8px}
+  .speakbtn:hover{background:var(--dgreen)}
+  .btnrow{display:flex;gap:8px;justify-content:center;margin-top:8px}
+  .sbtn{background:var(--blue);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:13px}
+  .sbtn:hover{background:var(--dblue)}
+  .ed{background:#6E8B99}.ed:hover{background:#55707d}
+  .group-label{margin-top:20px;font-weight:bold;color:var(--dblue);font-size:17px}
+  .dialog{background:#fff;border-radius:12px;padding:16px 18px;margin-top:14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+  .dialog h3{color:var(--dgreen);font-size:17px;margin-bottom:8px}
+  .line{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:18px}
+  .who{font-weight:bold;min-width:26px}.A{color:var(--blue)}.B{color:var(--dgreen)}
+  .playsent{background:none;border:none;cursor:pointer;font-size:17px}
+  .playall{margin-top:8px;background:var(--blue);color:#fff;border:none;padding:7px 16px;border-radius:20px;cursor:pointer;font-size:15px}
+  .qa{margin-top:10px;background:var(--lblue);border-radius:8px;padding:8px 14px;font-size:15px}
+  .qa b{color:var(--red)}
+  .formula{background:var(--green);color:#fff;text-align:center;font-size:23px;font-weight:bold;border-radius:12px;padding:14px;margin-top:14px;letter-spacing:2px}
+  .gvi{background:var(--lblue);border-radius:8px;padding:9px 14px;margin-top:10px;font-size:15px;color:#2c5b6e}
+  .eg{background:#fff;border-radius:10px;padding:12px 16px;margin-top:10px;font-size:18px}
+  .eg .wrong{color:var(--red);text-decoration:line-through}
+  .viq{display:block;color:#5a7d8c;font-size:14px;font-style:italic;margin-top:3px;font-weight:normal}
+  .quiz-q{background:#fff;border-radius:12px;padding:14px 18px;margin-top:14px}
+  .quiz-q p{font-size:17px;font-weight:bold}
+  .quiz-q label{display:block;background:var(--lgreen);border-radius:8px;padding:8px 14px;margin-top:8px;cursor:pointer;font-size:16px}
+  .quiz-q label:hover{background:#d3eae2}
+  .quiz-q input{margin-right:8px}
+  .fb{font-size:15px;margin-top:8px;font-weight:bold}
+  .ok{color:var(--dgreen)}.no{color:var(--red)}
+  #scoreBox{text-align:center;margin-top:18px;background:var(--lblue);border-radius:12px;padding:16px;font-size:19px;display:none}
+  .btn{background:var(--blue);color:#fff;border:none;padding:12px 34px;border-radius:24px;font-size:18px;cursor:pointer;display:block;margin:18px auto 0}
+  .btn:hover{background:var(--dblue)}
+  .tip{background:var(--lgreen);border-left:5px solid var(--blue);border-radius:0 8px 8px 0;padding:10px 16px;margin-top:10px;font-size:15px}
+  .warn{background:#FDECEA;border-left:5px solid var(--red)}
+  .warn b{color:var(--red)}
+  .hist{margin-top:12px;background:var(--lgreen);border-radius:8px;padding:8px 14px;font-size:14px}
+  .rstBtn{background:#fff;color:var(--blue);border:1.5px solid var(--blue);border-radius:18px;padding:6px 18px;cursor:pointer;font-size:14px;margin-top:10px}
+  .rstBtn:hover{background:var(--lblue)}
+  footer{text-align:center;color:#999;font-size:13px;padding:20px}
+  @media (max-width:600px){.hero h1{font-size:22px}.line{font-size:16px}.formula{font-size:19px}}
 </style>
 </head>
 <body>
-<div class="container" style="max-width: 900px;">
-<div class="d-flex justify-content-between align-items-center mb-4">
-  <h1>🎧 Chữa điếc tiếng Trung <small class="text-muted fs-6">(Đồng bộ tự động Cloud)</small></h1>
-  <button class="btn btn-dark" onclick="document.body.classList.toggle('dark')">Dark Mode</button>
+
+<div class="topbar">
+  <b>📖 HSK2 · 第4课</b>
+  <a href="#vocab">生词 Từ mới</a><a href="#texts">课文 Bài khóa</a><a href="#grammar">语法 Ngữ pháp</a><a href="#quiz">自测 Kiểm tra</a><a href="#hw">作业 Bài tập</a>
 </div>
 
-<div id="toastNotice" class="alert alert-success hidden" role="alert"></div>
-
-<div id="endLessonModal" class="custom-modal-overlay">
-  <div class="custom-modal-content">
-    <h3 class="text-success mb-3">🎉 Hoàn Thành Bài Học!</h3>
-    <p id="modalBodyText" class="fs-5 mb-4"></p>
-    <button class="btn btn-primary px-4" onclick="closeEndModal()">Tuyệt vời, làm lại bài này</button>
-  </div>
+<div class="hero">
+  <span class="badge">自学课件 · 不用老师也能学</span>
+  <h1>第4课　这个工作是他帮我介绍的。</h1>
+  <div class="vi">Ông ấy đã giới thiệu giúp tôi công việc này.</div>
 </div>
 
-<div id="deleteConfirmModal" class="custom-modal-overlay">
-  <div class="custom-modal-content border border-danger">
-    <h3 class="text-danger mb-3">⚠️ Xác Nhận Xóa Hẳn Bài Học</h3>
-    <p id="deleteModalBodyText" class="fs-6 mb-4 text-start bg-light p-3 rounded dark:bg-dark"></p>
-    <div class="d-flex justify-content-center gap-2">
-      <button class="btn btn-secondary px-3" onclick="closeModal('deleteConfirmModal')">Hủy bỏ</button>
-      <button class="btn btn-danger px-3" onclick="executeDeleteTopic()">Đồng ý xóa dữ liệu</button>
-    </div>
-  </div>
-</div>
+<main>
+<section>
+  <h2 class="sec">🎯 学习目标 Mục tiêu bài học</h2>
+  <div class="note">① Học 13 từ mới（trọng tâm: 两、已经、帮、介绍、接）<br>② Ba điểm ngữ pháp: “是……的” ｜ “……的时候” ｜ “已经……了”<br>③ Luyện 4 tình huống hội thoại: tặng quà, nghe điện thoại, nói về sở thích, nói về công việc</div>
+</section>
 
-<div id="deleteQuestionModal" class="custom-modal-overlay">
-  <div class="custom-modal-content border border-warning">
-    <h3 class="text-warning mb-3">❓ Xác Nhận Xóa Câu Hỏi</h3>
-    <p id="deleteQuestionBodyText" class="fs-6 mb-4 text-start bg-light p-3 rounded dark:bg-dark"></p>
-    <div class="d-flex justify-content-center gap-2">
-      <button class="btn btn-secondary px-3" onclick="closeModal('deleteQuestionModal')">Hủy bỏ</button>
-      <button class="btn btn-warning text-dark px-3 fw-bold" onclick="executeDeleteQuestion()">Đồng ý xóa</button>
-    </div>
-  </div>
-</div>
+<section id="vocab">
+  <h2 class="sec">📝 生词 Từ mới（点击卡片翻面 / Bấm vào thẻ để lật）</h2>
+  <div class="tip">💡 <b>Cách học:</b> đọc to mặt trước (chữ Hán + phiên âm) → lật thẻ đối chiếu nghĩa tiếng Việt → bấm 🔊 nghe câu ví dụ. Bạn có thể bấm ✏️ để <b>tự sửa câu ví dụ theo cách của mình</b> — câu mới sẽ được lưu lại trên máy của bạn (tính năng cá nhân hóa).</div>
+  <div id="cards" class="cardgrid"></div>
+  <button class="rstBtn" id="rstBtn" onclick="resetExamples()">↺ 恢复默认例句 / Khôi phục câu ví dụ mặc định</button>
+</section>
 
-<div class="card p-3 mb-4 shadow-sm">
-  <div class="row g-3 align-items-center">
-    <div class="col-md-5">
-      <label for="role" class="form-label fw-bold">Vai trò hệ thống:</label>
-      <select id="role" class="form-select" onchange="login()">
-        <option value="student">Học viên (Luyện nghe từ Cloud)</option>
-        <option value="teacher">Giáo viên (Quản lý & Xuất bản bài học)</option>
-      </select>
-    </div>
-    <div class="col-md-7">
-      <label class="form-label fw-bold mb-2">Chọn Bài Học Muốn Tương Tác:</label>
-      <div class="search-combo-container">
-        <input type="text" id="lessonSearchInput" class="form-control border-primary" 
-               placeholder="🔍 Đang tải dữ liệu từ đám mây..." 
-               onfocus="showDropdownResults()" 
-               oninput="handleSearchInput(this.value)" autocomplete="off" disabled>
-        <div id="searchDropdownMenu" class="search-results-dropdown"></div>
-      </div>
-    </div>
-  </div>
-</div>
+<section id="texts">
+  <h2 class="sec">📚 课文 Bài khóa（点 🔊 听句子 / Bấm 🔊 để nghe）</h2>
+  <div class="tip">💡 <b>Cách học:</b> nghe cả đoạn một lần → nghe từng câu và đọc theo → tự trả lờ̀i câu hỏi cuối mỗi bài → xem đáp án.</div>
+  <div id="dialogs"></div>
+</section>
 
-<div id="teacher" class="hidden card p-4 mb-4 border-warning shadow-sm">
-  <h3 class="text-warning mb-3">🛠️ Khu vực Quản lý (Giáo viên)</h3>
-  
-  <div class="alert alert-info py-2 small">
-    ℹ️ <strong>Quy trình đồng bộ:</strong> Thêm/Sửa/Xóa xong bài học ➡️ Bấm <strong>"Tải File JSON mới về máy"</strong> ➡️ Upload đè file đó lên GitHub của bạn để học viên tự động nhận bài mới.
-  </div>
+<section id="grammar">
+  <h2 class="sec">🔑 语法 Ngữ pháp（含越南语解释 / Có giải thích tiếng Việt）</h2>
 
-  <div class="card p-3 mb-4 border-secondary bg-light text-dark">
-    <h6 class="fw-bold text-secondary">📁 Quản lý Danh mục Bài học (Khóa học)</h6>
-    <div class="input-group mb-2">
-      <input type="text" id="newTopicTitle" class="form-control" placeholder="Nhập tên bài học mới...">
-      <button class="btn btn-primary" onclick="createNewTopic()">➕ Tạo Bài Học Mới</button>
-    </div>
-    <div class="d-flex justify-content-between align-items-center mt-2 small text-muted w-100">
-      <div id="topicTitleDisplayContainer" class="d-flex align-items-center gap-1 flex-grow-1" style="max-width: 70%;">
-        <span>Đang cấu hình cho bài học:</span>
-        <strong id="teacherCurrentTopicLabel" class="text-danger text-truncate" style="max-width: 200px;">Chưa chọn bài học nào</strong>
-        <button id="editTopicBtn" class="btn btn-link btn-sm p-0 text-decoration-none ms-1" onclick="toggleEditTopicTitle()" title="Sửa tên bài học">✏️</button>
-      </div>
-      <button class="btn btn-danger btn-sm py-0 flex-shrink-0" onclick="triggerDeleteTopicModal()">❌ Xóa hẳn Bài học này</button>
-    </div>
-  </div>
+  <div class="formula">名词 ＋ 是 ＋ 谁 ＋ 动作 ＋ 的</div>
+  <div class="gvi">📘 <b>Cách dùng:</b> Dùng khi <b>đã biết</b> việc gì đó xảy ra, muốn hỏi hoặc nhấn mạnh <b>AI</b> là ngườ̀i thực hiện hành động. Tương đương cấu trúc "là ..." trong tiếng Việt.</div>
+  <div class="eg">✅ 这本书是我写的。<span class="viq">Quyển sách này là do TÔI viết.（nhấn mạnh: tôi）</span><span class="wrong">　❌ 这本书我写的。</span></div>
+  <div class="eg">否定 Phủ định: thêm "不" trước "是" → 这本书<span style="color:var(--red)">不</span>是我买的。<span class="viq">Quyển sách này KHÔNG PHẢI tôi mua.</span></div>
 
-  <div>
-    <div class="mb-3">
-      <label class="form-label fw-bold">Nhập nội dung/đáp án câu hỏi (Chữ Hán hoặc Pinyin):</label>
-      <textarea id="ans" class="form-control" rows="1" placeholder="Ví dụ: Nǐ hǎo ma?..." oninput="autoResizeTextarea(this)"></textarea>
-    </div>
+  <div class="formula" style="background:var(--blue)">…… 的时候 ＝ khi / lúc</div>
+  <div class="gvi">📘 <b>Cách dùng:</b> đứng <b>TRƯỚC</b> động từ chính để chỉ thờ̀i điểm. Tiếng Việt nói "khi tôi 11 tuổi, tôi bắt đầu...", nhưng tiếng Trung phải đặt cả cụm "……的时候" ở trước động từ.</div>
+  <div class="eg">✅ 我十一岁的时候开始踢足球。<span class="viq">Tôi bắt đầu đá bóng khi tôi 11 tuổi.</span><span class="wrong">　❌ 我开始踢足球十一岁的时候。</span></div>
+  <div class="eg">动词+的时候：我睡觉的时候，我妈妈在做饭。<span class="viq">Lúc tôi ngủ, mẹ tôi đang nấu cơm.</span></div>
 
-    <div class="card p-3 mb-3 bg-white text-dark border-info">
-      <h6 class="fw-bold text-info">🗣️ Công cụ Tạo Giọng Đọc AI (Tiếng Trung)</h6>
-      <div class="row g-2 mb-2">
-        <div class="col-md-6"><select id="ttsVoiceSelect" class="form-select form-select-sm"></select></div>
-        <div class="col-md-3"><label class="small fw-bold">Tốc độ:</label><input type="range" id="ttsRate" class="form-range" min="0.5" max="1.5" step="0.1" value="1"></div>
-        <div class="col-md-3"><label class="small fw-bold">Cao độ:</label><input type="range" id="ttsPitch" class="form-range" min="0.5" max="1.5" step="0.1" value="1"></div>
-      </div>
-      <div class="d-flex gap-2">
-        <button type="button" class="btn btn-sm btn-info text-white" onclick="previewTTS()">🔊 Nghe thử</button>
-        <button type="button" class="btn btn-sm btn-success" onclick="addQuestion(true)">✨ Thêm bằng Giọng AI</button>
-      </div>
-    </div>
-    
-    <div class="mb-3">
-      <label class="form-label fw-bold">Hoặc chèn Link liên kết đến audio (.mp3):</label>
-      <input type="text" id="audioLink" class="form-control" placeholder="Dán link audio tại đây (ví dụ: https://.../audio.mp3)">
-      <button class="btn btn-success btn-sm mt-2" onclick="addQuestion(false)">➕ Thêm bằng Link</button>
-    </div>
-  </div>
-  
-  <hr>
-  <div class="mb-3 text-end">
-    <button class="btn btn-danger btn-lg fw-bold w-100" onclick="exportJSON()">💾 Bước cuối: Tải File JSON mới về máy</button>
-  </div>
+  <div class="formula" style="background:var(--dgreen)">已经 ＋ 动词 ＋ 了 ＝ đã ... rồi</div>
+  <div class="gvi">📘 <b>Cách dùng:</b> diễn tả hành động <b>đã hoàn thành</b> hoặc mức độ <b>đã đạt tới</b>. Lưu ý: tiếng Việt chỉ cần "đã... rồi", nhưng tiếng Trung bắt buộc có <b>cả "了" ở cuối</b>!</div>
+  <div class="eg">✅ 已经两年多了。／ 足球我已经踢了十年了。<span class="viq">Đã hơn hai năm rồi. ／ Tôi đã đá bóng được 10 năm rồi.</span><span class="wrong">　❌ 已经踢十年（漏“了”）</span></div>
+  <div class="tip warn">⚠️ <b>Lưu ý cho ngườ̀i Việt 越南学生易错提醒：</b>① Trước lượng từ dùng "两" (hai): 两个、两岁、两年 — <b>không nói "二个"</b>。② "长" trong 多长时间 đọc <b>cháng</b> (bao lâu)；trong 长大 đọc <b>zhǎng</b> (lớn lên)。</div>
+</section>
 
-  <h5 class="mt-4">Danh sách câu gốc <small class="text-muted fs-6">(Kéo thả ☰ để đổi vị trí câu)</small>:</h5>
-  <div id="questionList" class="border p-1 rounded bg-light text-dark" style="max-height: 350px; overflow-y: auto;"></div>
-</div>
+<section id="quiz">
+  <h2 class="sec">✏️ 自测 Kiểm tra（10题 · 自动判分 / Tự chấm điểm）</h2>
+  <div class="tip">💡 Chọn đáp án rồi bấm nút bên dưới để xem điểm. Có tiếng Việt gợi ý dưới mỗi câu hỏi.</div>
+  <div class="hist" id="histBox"></div>
+  <div id="quizbox"></div>
+  <button class="btn" onclick="grade()">交卷 Xem kết quả</button>
+  <div id="scoreBox"></div>
+</section>
 
-<div id="student" class="hidden card p-4 border-success shadow-sm">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h3 class="text-success m-0">✏️ Khu vực Luyện tập</h3>
-    <span id="lessonInfo" class="badge bg-info fs-6">Vui lòng chọn bài học</span>
-  </div>
-  
-  <div class="mb-3 text-center bg-light p-3 rounded dark:bg-secondary">
-    <div id="audioPlayerContainer"><audio id="player" controls class="w-100 mb-2"></audio></div>
-    
-    <div id="ttsPlayerContainer" class="hidden mb-3">
-       <div class="tts-player-wrapper">
-         <button id="ttsPlayBtn" class="btn btn-primary tts-btn" onclick="toggleStudentTTS()">▶</button>
-         <div class="tts-progress-container"><div id="ttsProgressBar" class="tts-progress-bar"></div></div>
-       </div>
-       <div class="small text-muted mt-2">Giọng đọc máy AI chất lượng cao</div>
-    </div>
-
-    <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap mb-2">
-      <button onclick="setSpeed(.5)" class="btn btn-sm btn-outline-primary">x0.5</button>
-      <button onclick="setSpeed(.7)" class="btn btn-sm btn-outline-primary">x0.75</button>
-      <button onclick="setSpeed(1)" class="btn btn-sm btn-outline-primary">x1.0</button>
-      <button onclick="setSpeed(1.5)" class="btn btn-sm btn-outline-primary">x1.5</button>
-      <span id="spd" class="badge bg-secondary p-2">Tốc độ: x1</span>
-    </div>
-    
-    <div class="d-flex justify-content-center align-items-center gap-2">
-      <label for="repeat" class="m-0 text-nowrap small">Lặp lại:</label>
-      <select id="repeat" class="form-select form-select-sm" style="width: auto;"><option>1</option><option>2</option><option>3</option><option>5</option></select>
-      <button class="btn btn-sm btn-warning" onclick="repeatPlay()">🔂 Phát lặp</button>
-    </div>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label fw-bold">Nội dung bạn nghe được:</label>
-    <textarea id="txt" class="form-control" rows="4" placeholder="Nhập chữ Hán, Pinyin đáp án nghe được..."></textarea>
-  </div>
-  
-  <div class="mb-3 d-flex gap-2 flex-wrap justify-content-between">
-    <div class="d-flex gap-2">
-      <button class="btn btn-success" onclick="check()">✔️ Chấm điểm</button>
-      <button class="btn btn-info text-white" onclick="showAns()">👁️ Xem đáp án đúng</button>
-    </div>
-    <div class="d-flex gap-2">
-      <button class="btn btn-outline-secondary" onclick="prevLesson()">⬅️ Câu phía trước</button>
-      <button class="btn btn-primary" onclick="nextLesson()">Câu tiếp theo ➡️</button>
-    </div>
-  </div>
-
-  <div id="result" class="mt-3"></div>
-  <div id="directAnswer" class="mt-2 p-3 bg-light text-dark rounded border hidden"></div>
-</div>
-</div>
+<section id="hw">
+  <h2 class="sec">🏠 作业 Bài tập về nhà</h2>
+  <div class="note">✍️ <b>写 Viết:</b> Chép 13 từ mới, mỗi từ 3 lần. Đặt 2 câu với “是……的” và 2 câu với “已经……了”。<br>🎤 <b>说 Nói:</b> Ghi âm 30 giây kể về bản thân: 我__岁的时候开始__，已经__了。（Tôi bắt đầu ___ khi ___ tuổi, đã ___ rồi.）<br>📖 <b>预习 Chuẩn bị:</b> Học trước từ mới bài 5. Suy nghĩ trước: bạn bắt đầu học tiếng Trung năm nào? Ai giới thiệu cho bạn? （Dùng “是……的” để trả lờ̀i）</div>
+</section>
+</main>
+<footer>HSK2 标准教程 第4课 · 自学课件 · 支持手机/电脑 · 例句修改保存在本机浏览器</footer>
 
 <script>
-let database = [];
-let currentTopicIdx = 0, currentQuestionIdx = 0, totalScore = [], currentPlaybackRate = 1;
-let activeQuestions = []; 
-let synth = window.speechSynthesis, chineseVoices = [];
-let isTtsLooping = false, isTtsPlaying = false, ttsCurrentCharIndex = 0, ttsLastBoundaryIndex = 0;  
-let questionIndexToDelete = null;
+const VOCAB=[
+ ["生日","shēngrì","sinh nhật","祝你生日快乐！","教室"],
+ ["快乐","kuàilè","vui vẻ","生日快乐！","教室"],
+ ["给","gěi","cho / tặng","这是送给你的。","教室"],
+ ["接","jiē","nghe / nhận","我去接电话。","家里"],
+ ["晚上","wǎnshang","buổi tối","晚上我问一下儿子。","家里"],
+ ["问","wèn","hỏi","我想问一下老师。","家里"],
+ ["非常","fēicháng","rất / vô cùng","我非常喜欢踢足球。","运动场"],
+ ["开始","kāishǐ","bắt đầu","我十一岁开始踢足球。","运动场"],
+ ["已经","yǐjing","đã","我已经工作了两年了。","运动场"],
+ ["长","cháng","dài / lâu","你在这儿工作多长时间了？","公司"],
+ ["两","liǎng","hai","我有两个儿子。","公司"],
+ ["帮","bāng","giúp","这个工作是他帮我介绍的。","公司"],
+ ["介绍","jièshào","giới thiệu","请你介绍一下自己。","公司"]];
+const TEXTS=[
+ ["课文① 在教室 Trong lớp học",["A:生日快乐！这是送给你的！","B:什么？是一本书吗？","A:对，这本书是我写的。","B:太谢谢你了！"],
+  "这本书是谁写的？→ 是我写的。","Quyển sách này là ai viết? → Là tôi viết."],
+ ["课文② 在家里 Ở nhà",["A:早上好！有你一个电话。","B:电话是谁接的？","A:不知道，是儿子接的。","B:好，晚上我问一下儿子。"],
+  "早上的电话是谁接的？→ 是儿子接的。","Ai nghe điện thoại sáng nay? → Con trai nghe."],
+ ["课文③ 在运动场 Ở sân vận động",["A:你喜欢踢足球吗？","B:非常喜欢。","A:你是什么时候开始踢足球的？","B:我十一岁的时候开始踢足球，已经踢了十年了。"],
+  "他什么时候开始踢足球的？→ 十一岁的时候。","Anh ấy bắt đầu đá bóng khi nào? → Khi 11 tuổi."],
+ ["课文④ 在公司 Trong công ty",["A:你在这儿工作多长时间了？","B:已经两年多了，我是2011年来的。","A:你认识谢先生吗？","B:认识，我们是大学同学，这个工作是他帮我介绍的。"],
+  "工作是谁帮他介绍的？→ 谢先生。","Ai giới thiệu công việc cho anh ấy? → Ông Tạ."]];
+const QUIZ=[
+ ["这本书是＿＿写的。","我","了","的",0,"Quyển sách này là NGƯỜI NÀO viết?"],
+ ["哪句正确？","我开始踢足球十一岁的时候。","我十一岁的时候开始踢足球。","我踢足球十一岁的时候开始。",1,"Câu nào đúng? Chú ý vị trí của “的时候”."],
+ ["他已经工作两年＿＿。","的","了","吗",1,"Anh ấy đã làm việc 2 năm RỒI.（nhớ dấu hiệu cuối câu）"],
+ ["我有＿＿个儿子。","二","两","仨",1,"Tôi có ___ ngườ̀i con trai.（hai + lượng từ）"],
+ ["越南语 “giới thiệu” 的中文是：","开始","介绍","帮忙",1,"Từ “giới thiệu” trong tiếng Trung là gì?"],
+ ["这个工作是他帮我介绍＿＿。","的","了","吗",0,"Công việc này là anh ấy GIÚP TÔI GIỚI THIỆU.（nhấn mạnh hành động giới thiệu）"],
+ ["问“是谁做的”要用：","什么","什么时候","谁",2,"Muốn hỏi “là AI làm” thì dùng từ nào?"],
+ ["“多长时间”的“长”读：","zhǎng","cháng","两个都对",1,"\"长\" trong từ \"多长时间\" (bao lâu) đọc như thế nào?"],
+ ["我＿＿岁的时候开始打篮球。","已经","什么","十一",2,"Tôi bắt đầu chơi bóng rổ khi ___ tuổi."],
+ ["“我非常喜欢踢足球。”意思是：","Tôi không thích đá bóng.","Tôi rất thích đá bóng.","Tôi bắt đầu đá bóng.",1,"“我非常喜欢踢足球。” nghĩa là gì?"]];
 
-async function fetchCloudData() {
-  let searchInput = document.getElementById("lessonSearchInput");
-  try {
-    let response = await fetch('./data.json?v=' + Date.now());
-    if (response.ok) {
-      database = await response.json();
-      showToast("☁️ Đồng bộ dữ liệu bài học thành công!", "success");
-    } else {
-      database = [{ id: Date.now(), title: "Bài học mẫu số 1", questions: [] }];
-    }
-  } catch (err) {
-    database = [{ id: Date.now(), title: "Bài học mẫu số 1", questions: [] }];
-  }
-  
-  if (database.length > 0 && database[currentTopicIdx]) {
-    searchInput.value = database[currentTopicIdx].title;
-  }
-  searchInput.removeAttribute("disabled");
-  searchInput.placeholder = "🔍 Gõ tìm kiếm hoặc click chọn bài học...";
-  
-  buildSearchDropdown(); 
-  switchTopic(true); 
-  login();
-}
+function speak(t,btn){if(!t)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="zh-CN";u.rate=0.8;speechSynthesis.speak(u);
+ if(btn){btn.style.transform="scale(1.3)";setTimeout(()=>btn.style.transform="",250);}}
 
-function updateDataAndRender() {
-  renderQuestionsInTeacher();
-  buildSearchDropdown(document.getElementById("lessonSearchInput").value);
-}
+/* ---------- 生词卡（含个人化例句） ---------- */
+const cards=document.getElementById("cards");let curGroup="";
+VOCAB.forEach((v,i)=>{
+ if(v[4]!==curGroup){curGroup=v[4];const lab=document.createElement("div");lab.className="group-label";lab.style.gridColumn="1/-1";
+  lab.textContent="📍 在"+curGroup;cards.appendChild(lab);}
+ const d=document.createElement("div");d.className="flip";
+ d.innerHTML='<div class="flip-inner"><div class="face front"><div class="zi">'+v[0]+'</div><div class="py">'+v[1]+'</div><button class="speakbtn">🔊</button></div><div class="face back"><div class="vi">'+v[2]+'</div><div class="ex">'+v[3]+'</div><div class="btnrow"><button class="sbtn se">🔊 例句</button><button class="sbtn ed">✏️ 改例句</button></div></div></div>';
+ const exDiv=d.querySelector(".ex");
+ const saved=localStorage.getItem("ex_"+i);
+ if(saved!==null) exDiv.textContent=saved;
+ d.querySelector(".speakbtn").addEventListener("click",ev=>{ev.stopPropagation();speak(v[0],ev.target);});
+ d.querySelector(".se").addEventListener("click",ev=>{ev.stopPropagation();speak(exDiv.textContent,ev.target);});
+ d.querySelector(".ed").addEventListener("click",ev=>{ev.stopPropagation();editEx(i,exDiv,ev.target);});
+ d.addEventListener("click",()=>d.classList.toggle("flipped"));
+ cards.appendChild(d);});
 
-window.addEventListener('DOMContentLoaded', fetchCloudData);
+function editEx(i,exDiv,btn){
+ const def=VOCAB[i][3];
+ const ne=prompt("修改例句 / Sửa câu ví dụ：\n（留空并确定 = 恢复默认 / Để trống rồi OK = về mặc định）",exDiv.textContent);
+ if(ne===null) return;
+ if(ne.trim()===""){localStorage.removeItem("ex_"+i);exDiv.textContent=def;}
+ else{localStorage.setItem("ex_"+i,ne.trim());exDiv.textContent=ne.trim();}
+ const old=btn.textContent;btn.textContent="✓ 已保存 Đã lưu";setTimeout(()=>btn.textContent=old,1500);}
 
-function showToast(msg, type = "success") {
-  let t = document.getElementById("toastNotice"); t.innerText = msg;
-  t.className = `alert alert-${type} show`; t.classList.remove("hidden");
-  setTimeout(() => { t.classList.remove("show"); setTimeout(() => t.classList.add("hidden"), 300); }, 1200);
-}
+function resetExamples(){
+ VOCAB.forEach((v,i)=>{localStorage.removeItem("ex_"+i);
+  const d=document.querySelectorAll(".flip .ex")[i];if(d)d.textContent=v[3];});
+ const b=document.getElementById("rstBtn");const old=b.textContent;
+ b.textContent="✓ 已恢复 Đã khôi phục";setTimeout(()=>b.textContent=old,1500);}
 
-function closeModal(id) { document.getElementById(id).classList.remove("show"); }
+/* ---------- 课文 ---------- */
+const dl=document.getElementById("dialogs");
+TEXTS.forEach(t=>{
+ const d=document.createElement("div");d.className="dialog";
+ let lines="";
+ t[1].forEach(s=>{const w=s[0];const cls=w==="A"?"A":"B";
+  lines+='<div class="line"><span class="who '+cls+'">'+w+'</span><span>'+s.slice(2)+'</span><button class="playsent" onclick="speak(\''+s.slice(2)+'\',this)">🔊</button></div>';});
+ d.innerHTML='<h3>'+t[0]+'</h3>'+lines+'<div class="qa">❓ '+t[2]+'<span class="viq">'+t[3]+'</span></div><button class="playall" onclick=\'speak('+JSON.stringify(t[1].map(s=>s.slice(2)).join("，"))+')\'>▶ 朗读全段 Nghe cả đoạn</button>';
+ dl.appendChild(d);});
 
-function autoResizeTextarea(element) {
-  element.style.height = "auto";
-  element.style.height = element.scrollHeight + "px";
-}
+/* ---------- 测验 ---------- */
+const qb=document.getElementById("quizbox");
+QUIZ.forEach((q,i)=>{
+ const d=document.createElement("div");d.className="quiz-q";d.id="q"+i;
+ let h="<p>"+(i+1)+". "+q[0]+"</p>";
+ if(q[5]) h+='<div class="viq">'+q[5]+'</div>';
+ for(let j=1;j<=3;j++) h+='<label><input type="radio" name="q'+i+'" value="'+(j-1)+'">'+q[j]+'</label>';
+ h+='<div class="fb" id="fb'+i+'"></div>';d.innerHTML=h;qb.appendChild(d);});
 
-function removeVietnameseTones(str) {
-  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
-  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
-  str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
-  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
-  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
-  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
-  str = str.replace(/đ/g,"d");
-  return str.toLowerCase().trim();
-}
+function showHist(){
+ const box=document.getElementById("histBox");
+ const h=JSON.parse(localStorage.getItem("hsk2l4_hist")||"[]");
+ if(!h.length){box.innerHTML="📊 成绩记录 Lịch sử: <span class='viq'>暂无记录 / Chưa có lần làm nào</span>";return;}
+ box.innerHTML="📊 成绩记录 Lịch sử làm bài: "+h.slice(-5).reverse().map(x=>x.d+": <b>"+x.s+"/"+x.t+"</b>").join(" ｜ ");}
 
-function buildSearchDropdown(filterText = "") {
-  let dropdownMenu = document.getElementById("searchDropdownMenu");
-  let cleanKeyword = removeVietnameseTones(filterText);
-  let matchesCount = 0;
-  
-  let html = "";
-  database.forEach((t, idx) => {
-    let cleanTitle = removeVietnameseTones(t.title);
-    if (cleanKeyword.length > 0 && !cleanTitle.includes(cleanKeyword)) return;
-    matchesCount++;
-    let activeClass = idx === currentTopicIdx ? "active" : "";
-    html += `<div class="search-result-item ${activeClass}" onclick="selectTopicFromSearch(${idx})">
-              🔹 <strong>${t.title}</strong> <span class="text-muted small">(${t.questions.length} câu)</span>
-            </div>`;
-  });
+function grade(){
+ let score=0;
+ QUIZ.forEach((q,i)=>{
+  const sel=document.querySelector("input[name=q"+i+"]:checked");const fb=document.getElementById("fb"+i);
+  if(!sel){fb.textContent="⚠️ 未作答 / Chưa trả lởi";fb.className="fb no";return;}
+  if(Number(sel.value)===q[4]){score++;fb.textContent="✅ 正确 / Chính xác!";fb.className="fb ok";document.getElementById("q"+i).style.background="#E9F4F0";}
+  else{fb.textContent="❌ 错误 / Sai。正确答案 Đáp án đúng: "+q[q[4]+1];fb.className="fb no";document.getElementById("q"+i).style.background="#FDECEA";}});
+ const box=document.getElementById("scoreBox");box.style.display="block";
+ const msg=score>=9?"太棒了！Tuyệt vởi! 🎉":score>=7?"不错，继续加油！Khá tốt!":score>=5?"再复习一遍生词和语法吧。Xem lại từ mới và ngữ pháp nhé!":"建议重新学习本课。Nên học lại bài này.";
+ box.innerHTML="🎯 得分 Điểm：<b style='font-size:30px;color:var(--green)'>"+score+"</b> / "+QUIZ.length+"<br>"+msg;
+ const h=JSON.parse(localStorage.getItem("hsk2l4_hist")||"[]");
+ h.push({d:new Date().toLocaleDateString("vi-VN"),s:score,t:QUIZ.length});
+ localStorage.setItem("hsk2l4_hist",JSON.stringify(h.slice(-10)));
+ showHist();
+ box.scrollIntoView({behavior:"smooth"});}
 
-  if (matchesCount === 0) html = `<div class="p-3 text-muted text-center small">❌ Không tìm thấy bài học nào</div>`;
-  dropdownMenu.innerHTML = html;
-}
-
-function showDropdownResults() {
-  let dropdownMenu = document.getElementById("searchDropdownMenu");
-  dropdownMenu.style.display = "block";
-  buildSearchDropdown(document.getElementById("lessonSearchInput").value);
-}
-
-function handleSearchInput(val) { buildSearchDropdown(val); }
-
-function selectTopicFromSearch(idx) {
-  currentTopicIdx = idx;
-  document.getElementById("lessonSearchInput").value = database[idx].title;
-  document.getElementById("searchDropdownMenu").style.display = "none";
-  switchTopic(true); 
-}
-
-document.addEventListener("click", function(e) {
-  let container = document.querySelector(".search-combo-container");
-  if (container && !container.contains(e.target)) document.getElementById("searchDropdownMenu").style.display = "none";
-});
-
-function updateTopicLabel() {
-  let labelContainer = document.getElementById("topicTitleDisplayContainer");
-  let inputEl = document.getElementById("lessonSearchInput");
-  if (currentTopicIdx === null || !database[currentTopicIdx]) {
-    labelContainer.innerHTML = `<span>Đang cấu hình cho bài học:</span> <strong id="teacherCurrentTopicLabel" class="text-danger">Chưa chọn bài học</strong>`;
-    inputEl.value = "";
-  } else {
-    labelContainer.innerHTML = `<span>Đang cấu hình cho bài học:</span> <strong id="teacherCurrentTopicLabel" class="text-danger text-truncate" style="max-width:200px;">${database[currentTopicIdx].title}</strong> <button class="btn btn-link btn-sm p-0 text-decoration-none ms-1" onclick="toggleEditTopicTitle()">✏️</button>`;
-    if (document.activeElement !== inputEl) inputEl.value = database[currentTopicIdx].title;
-  }
-}
-
-function toggleEditTopicTitle() {
-  if (currentTopicIdx === null) return;
-  let labelContainer = document.getElementById("topicTitleDisplayContainer");
-  labelContainer.innerHTML = `<input type="text" id="editTopicTitleInput" class="form-control form-control-sm d-inline-block me-1" value="${database[currentTopicIdx].title}" style="max-width: 220px;"> <button class="btn btn-success btn-sm py-0 px-2 me-1" onclick="saveTopicTitle()">Lưu</button> <button class="btn btn-secondary btn-sm py-0 px-2" onclick="updateTopicLabel()">Hủy</button>`;
-  document.getElementById("editTopicTitleInput").focus();
-}
-
-function saveTopicTitle() {
-  let newTitle = document.getElementById("editTopicTitleInput").value.trim();
-  if (!newTitle) return showToast("Tên bài học không được rỗng!", "danger");
-  database[currentTopicIdx].title = newTitle;
-  updateDataAndRender(); updateTopicLabel(); showToast("✏️ Đã sửa đổi tên bài học!");
-}
-
-function stopAllAudio() {
-  if (window.player) player.pause();
-  if (synth) synth.cancel(); 
-  isTtsLooping = isTtsPlaying = false; ttsCurrentCharIndex = ttsLastBoundaryIndex = 0;
-  if (document.getElementById("ttsPlayBtn")) document.getElementById("ttsPlayBtn").innerText = "▶";
-  if (document.getElementById("ttsProgressBar")) document.getElementById("ttsProgressBar").style.width = "0%";
-}
-
-function switchTopic(shouldShuffle = false) {
-  stopAllAudio(); if(currentTopicIdx === null || !database[currentTopicIdx]) return;
-  if (shouldShuffle) {
-    currentQuestionIdx = 0; totalScore = []; activeQuestions = [...database[currentTopicIdx].questions];
-    for (let i = activeQuestions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1)); [activeQuestions[i], activeQuestions[j]] = [activeQuestions[j], activeQuestions[i]];
-    }
-  } else { activeQuestions = [...database[currentTopicIdx].questions]; }
-  updateTopicLabel(); clearResultUI(); renderQuestionsInTeacher(); loadCurrentQuestion();
-}
-
-function clearResultUI() { document.getElementById("directAnswer").classList.add("hidden"); document.getElementById("result").innerHTML = ""; document.getElementById("txt").value = ""; }
-
-function createNewTopic() {
-  let title = document.getElementById("newTopicTitle").value.trim();
-  if(!title) return showToast("Vui lòng nhập tên bài học!", "danger");
-  database.push({ id: Date.now(), title: title, questions: [] });
-  currentTopicIdx = database.length - 1; document.getElementById("newTopicTitle").value = ""; 
-  updateDataAndRender(); switchTopic(true);
-}
-
-function triggerDeleteTopicModal() {
-  if (currentTopicIdx === null) return showToast("Chưa chọn bài học!", "danger");
-  if (database.length <= 1) return showToast("Cần giữ lại ít nhất 1 bài học!", "danger");
-  document.getElementById("deleteModalBodyText").innerHTML = `Xóa bài học: <strong class="text-danger">"${database[currentTopicIdx].title}"</strong>?`;
-  document.getElementById("deleteConfirmModal").classList.add("show");
-}
-
-function executeDeleteTopic() {
-  if (currentTopicIdx !== null) { database.splice(currentTopicIdx, 1); currentTopicIdx = 0; currentQuestionIdx = 0; updateDataAndRender(); switchTopic(true); }
-  closeModal('deleteConfirmModal');
-}
-
-function speakText(text, options = {}, onboundary = null, onend = null) {
-  if (synth.speaking) synth.cancel(); let u = new SpeechSynthesisUtterance(text);
-  if (chineseVoices.length > 0) { let voice = chineseVoices.find(v => v.name === options.voiceName) || chineseVoices[options.voiceIdx || 0]; if (voice) u.voice = voice; }
-  u.rate = (options.rate || 1) * (options.playbackModifier || 1); u.pitch = options.pitch || 1;
-  if(onboundary) u.onboundary = onboundary; if(onend) u.onend = onend;
-  synth.speak(u); return u;
-}
-
-function addQuestion(isAI) {
-  if (currentTopicIdx === null || !database[currentTopicIdx]) return showToast("Chưa chọn bài học!", "danger");
-  let textarea = document.getElementById("ans"), text = textarea.value.trim();
-  if (!text) return showToast("Vui lòng điền đáp án!", "danger");
-
-  if (isAI) {
-    let vName = chineseVoices.length > 0 ? chineseVoices[document.getElementById("ttsVoiceSelect").value].name : "";
-    database[currentTopicIdx].questions.push({ answer: text, isTTS: true, voiceName: vName, rate: parseFloat(document.getElementById("ttsRate").value), pitch: parseFloat(document.getElementById("ttsPitch").value), audio: "" });
-    textarea.value = ""; textarea.style.height = "auto"; updateDataAndRender(); switchTopic(false); showToast("✨ Thêm câu hỏi AI thành công!");
-  } else {
-    let audioLink = document.getElementById("audioLink").value.trim();
-    if (!audioLink) return showToast("Vui lòng nhập link audio!", "danger");
-    database[currentTopicIdx].questions.push({ answer: text, isTTS: false, audio: audioLink });
-    textarea.value = ""; textarea.style.height = "auto"; document.getElementById("audioLink").value = ""; updateDataAndRender(); switchTopic(false); showToast("➕ Thêm câu hỏi thành công!");
-  }
-}
-
-function triggerDeleteQuestionModal(qIdx) {
-  questionIndexToDelete = qIdx; document.getElementById("deleteQuestionBodyText").innerText = `Xóa câu: "${database[currentTopicIdx].questions[qIdx].answer}"?`;
-  document.getElementById("deleteQuestionModal").classList.add("show");
-}
-
-function executeDeleteQuestion() {
-  if (questionIndexToDelete !== null && currentTopicIdx !== null) { database[currentTopicIdx].questions.splice(questionIndexToDelete, 1); closeModal('deleteQuestionModal'); updateDataAndRender(); switchTopic(false); showToast("❌ Đã xóa câu hỏi!"); }
-}
-
-function toggleEditQuestionRow(i) {
-  let textContainer = document.getElementById(`q-text-container-${i}`), actionDiv = document.getElementById(`q-action-${i}`);
-  textContainer.classList.remove("one-line-text");
-  textContainer.innerHTML = `<textarea id="edit-input-${i}" class="form-control form-control-sm edit-textarea" rows="1" oninput="autoResizeTextarea(this)">${database[currentTopicIdx].questions[i].answer}</textarea>`;
-  actionDiv.innerHTML = `<button class="btn btn-success btn-sm py-0 px-2 me-1" onclick="saveEditedQuestion(${i})">Lưu</button> <button class="btn btn-secondary btn-sm py-0 px-2" onclick="renderQuestionsInTeacher()">Hủy</button>`;
-  let textarea = document.getElementById(`edit-input-${i}`); textarea.focus(); autoResizeTextarea(textarea);
-}
-
-function saveEditedQuestion(i) {
-  let val = document.getElementById(`edit-input-${i}`).value.trim(); if(!val) return showToast("Nội dung trống!", "danger");
-  database[currentTopicIdx].questions[i].answer = val; updateDataAndRender(); switchTopic(false); showToast("✏️ Đã cập nhật!");
-}
-
-function renderQuestionsInTeacher() {
-  let listDiv = document.getElementById("questionList"); if (currentTopicIdx === null || !database[currentTopicIdx]) { listDiv.innerHTML = "<div class='text-muted p-2'>Chưa chọn bài học.</div>"; return; }
-  let cur = database[currentTopicIdx]; if (!cur.questions || cur.questions.length === 0) { listDiv.innerHTML = "<div class='text-muted p-2'>Bài học trống.</div>"; return; }
-  listDiv.innerHTML = cur.questions.map((q, i) => `
-    <div class="item-flex align-items-center" draggable="true" data-index="${i}" ondragstart="dragSrcIndex = ${i}" ondragover="event.preventDefault()" ondrop="handleDrop(event)">
-      <div class="d-flex align-items-center flex-grow-1 min-w-0 me-2" style="max-width: 75%;">
-        <span class="drag-handle flex-shrink-0">☰</span> <span class="one-line-text flex-grow-1 fw-medium" id="q-text-container-${i}"><strong>Câu ${i+1}:</strong> ${q.answer}</span>
-      </div>
-      <div id="q-action-${i}" class="d-flex flex-shrink-0">
-        <button class="btn btn-warning text-dark btn-sm py-0 px-2 me-1 fw-bold" onclick="toggleEditQuestionRow(${i})">Sửa</button>
-        <button class="btn btn-danger btn-sm py-0 px-2" onclick="triggerDeleteQuestionModal(${i})">Xóa</button>
-      </div>
-    </div>`).join("");
-}
-
-let dragSrcIndex = null;
-function handleDrop(e) {
-  let targetIndex = parseInt(e.currentTarget.getAttribute('data-index'));
-  if (dragSrcIndex !== null && dragSrcIndex !== targetIndex && currentTopicIdx !== null) {
-    let questions = database[currentTopicIdx].questions; let draggedItem = questions.splice(dragSrcIndex, 1)[0];
-    questions.splice(targetIndex, 0, draggedItem); updateDataAndRender(); switchTopic(false);
-  }
-}
-
-function loadCurrentQuestion() {
-  stopAllAudio(); if (currentTopicIdx === null || activeQuestions.length === 0) { document.getElementById("lessonInfo").innerHTML = "Chưa chọn bài học"; if(window.player) player.src = ""; document.getElementById("audioPlayerContainer").classList.remove("hidden"); document.getElementById("ttsPlayerContainer").classList.add("hidden"); return; }
-  document.getElementById("lessonInfo").innerHTML = `Câu ${currentQuestionIdx + 1} / ${activeQuestions.length}`;
-  let q = activeQuestions[currentQuestionIdx]; document.getElementById("audioPlayerContainer").classList.toggle("hidden", q.isTTS); document.getElementById("ttsPlayerContainer").classList.toggle("hidden", !q.isTTS);
-  if (!q.isTTS) player.src = q.audio;
-  clearResultUI();
-}
-
-function login() { stopAllAudio(); let role = document.getElementById("role").value; document.getElementById("teacher").classList.toggle("hidden", role !== "teacher"); document.getElementById("student").classList.toggle("hidden", role !== "student"); clearResultUI(); }
-
-function populateVoiceList() { if (!synth) return; chineseVoices = synth.getVoices().filter(v => v.lang.toLowerCase().includes('zh')); document.getElementById("ttsVoiceSelect").innerHTML = chineseVoices.length === 0 ? "<option>Không tìm thấy giọng Trung</option>" : chineseVoices.map((v, i) => `<option value="${i}">${v.name}</option>`).join(""); }
-populateVoiceList(); if (synth && synth.onvoiceschanged !== undefined) synth.onvoiceschanged = populateVoiceList;
-
-function previewTTS() { let text = document.getElementById("ans").value.trim(); if (!text) return showToast("Nhập nội dung trước!", "danger"); speakText(text, { voiceIdx: document.getElementById("ttsVoiceSelect").value, rate: parseFloat(document.getElementById("ttsRate").value), pitch: parseFloat(document.getElementById("ttsPitch").value) }); }
-function toggleStudentTTS() { if (isTtsPlaying) { synth.cancel(); isTtsPlaying = false; ttsCurrentCharIndex = ttsLastBoundaryIndex; document.getElementById("ttsPlayBtn").innerText = "▶"; } else { document.getElementById("ttsPlayBtn").innerText = "∥"; isTtsPlaying = true; playStudentTTS(); } }
-
-function playStudentTTS() {
-  let q = activeQuestions[currentQuestionIdx]; if (!q || !q.isTTS) return;
-  let fullText = q.answer, textToSpeak = fullText.substring(ttsCurrentCharIndex); if (textToSpeak.trim() === "") { ttsCurrentCharIndex = 0; textToSpeak = fullText; }
-  return speakText(textToSpeak, { voiceName: q.voiceName, rate: q.rate, pitch: q.pitch, playbackModifier: currentPlaybackRate },
-    (event) => { if (!isTtsPlaying) return; let globalIndex = ttsCurrentCharIndex + event.charIndex; ttsLastBoundaryIndex = globalIndex; document.getElementById("ttsProgressBar").style.width = Math.min(100, Math.round((globalIndex / fullText.length) * 100)) + "%"; },
-    () => { if (isTtsPlaying && !isTtsLooping) { isTtsPlaying = false; ttsCurrentCharIndex = ttsLastBoundaryIndex = 0; document.getElementById("ttsPlayBtn").innerText = "▶"; document.getElementById("ttsProgressBar").style.width = "100%"; setTimeout(() => document.getElementById("ttsProgressBar").style.width = "0%", 250); } }
-  );
-}
-
-function setSpeed(v) { currentPlaybackRate = v; player.playbackRate = v; document.getElementById("spd").innerText = "Tốc độ: x" + v; }
-
-async function repeatPlay() {
-  let n = parseInt(document.getElementById("repeat").value), q = activeQuestions[currentQuestionIdx]; if(!q) return;
-  if (q.isTTS) {
-    if (isTtsPlaying) { stopAllAudio(); return; }
-    synth.cancel(); isTtsLooping = isTtsPlaying = true; document.getElementById("ttsPlayBtn").innerText = "∥";
-    for (let i = 0; i < n && isTtsLooping && isTtsPlaying; i++) {
-      ttsCurrentCharIndex = ttsLastBoundaryIndex = 0; let uhr = playStudentTTS();
-      if(uhr) await new Promise(r => { uhr.onend = r; uhr.onerror = r; });
-      await new Promise(r => setTimeout(r, 800));
-    }
-    stopAllAudio();
-  } else { for (let i = 0; i < n; i++) { player.currentTime = 0; try { await player.play(); await new Promise(r => player.onended = r); } catch(e) { break; } } }
-}
-
-function check() {
-  let q = activeQuestions[currentQuestionIdx]; if (!q) return;
-  let userRaw = document.getElementById("txt").value;
-  let cleanString = (str) => { if (!str) return ""; return str.toLowerCase().replace(/\s+/g, ' ').trim(); };
-  let cleanAnswer = cleanString(q.answer), cleanUser = cleanString(userRaw);
-  if (cleanAnswer.length === 0) { document.getElementById("result").innerHTML = `<div class="alert alert-warning mt-2">Hệ thống chưa thiết lập đáp án cho câu này!</div>`; return; }
-
-  let isChinese = /[\u4e00-\u9fa5]/.test(cleanAnswer);
-  let awTokens = isChinese ? cleanAnswer.split("") : cleanAnswer.split(" ").filter(x => x !== "");
-  let uwTokens = isChinese ? cleanUser.split("") : cleanUser.split(" ").filter(x => x !== "");
-  let m = awTokens.length, n = uwTokens.length;
-  let dp = Array(m + 1).fill().map(() => Array(n + 1).fill(0));
-  for (let i = 0; i <= m; i++) dp[i][0] = i;
-  for (let j = 0; j <= n; j++) dp[0][j] = j;
-
-  for (let i = 1; i <= m; i++) {
-    for (let j = 1; j <= n; j++) {
-      if (awTokens[i - 1] === uwTokens[j - 1]) dp[i][j] = dp[i - 1][j - 1];
-      else dp[i][j] = Math.min(dp[i - 1][j - 1] + 1, dp[i - 1][j] + 1, dp[i][j - 1] + 1);
-    }
-  }
-
-  let i = m, j = n, steps = [];
-  while (i > 0 || j > 0) {
-    if (i > 0 && j > 0 && awTokens[i - 1] === uwTokens[j - 1]) { steps.unshift({ type: 'correct', val: uwTokens[j - 1] }); i--; j--; }
-    else if (i > 0 && j > 0 && dp[i][j] === dp[i - 1][j - 1] + 1) { steps.unshift({ type: 'substitution', val: uwTokens[j - 1], correctVal: awTokens[i - 1] }); i--; j--; }
-    else if (j > 0 && (i === 0 || dp[i][j] === dp[i][j - 1] + 1)) { steps.unshift({ type: 'extra', val: uwTokens[j - 1] }); j--; }
-    else { steps.unshift({ type: 'missing', val: awTokens[i - 1] }); i--; }
-  }
-
-  let correctCount = steps.filter(s => s.type === 'correct').length;
-  let score = Math.max(0, Math.min(100, Math.round((correctCount / m) * 100))); totalScore[currentQuestionIdx] = score;
-
-  let filteredHtml = [], joinChar = isChinese ? "" : " ";
-  steps.forEach(step => {
-    let displayVal = step.val === " " ? "⎵" : step.val;
-    if (step.type === 'correct') filteredHtml.push(`<span class='correct'>${displayVal}</span>`);
-    else if (step.type === 'substitution') filteredHtml.push(`<span class='wrong'>${displayVal}</span><span class='missing'>[Đúng: ${step.correctVal}]</span>`);
-    else if (step.type === 'extra') filteredHtml.push(`<span class='wrong'>${displayVal}</span>`);
-    else if (step.type === 'missing') filteredHtml.push(`<span class='missing'>[Thiếu: ${step.val}]</span>`);
-  });
-
-  document.getElementById("result").innerHTML = `<div class="alert alert-secondary mt-2"><h4>Kết quả chấm điểm: <span class="${score >= 80 ? 'text-success' : 'text-danger'}">${score}%</span></h4><div class="mt-3 d-flex flex-wrap align-items-center" style="line-height: 2.5;">${filteredHtml.join(joinChar)}</div></div>`;
-}
-
-function showAns() {
-  let q = activeQuestions[currentQuestionIdx]; if (!q) return;
-  document.getElementById("directAnswer").innerHTML = `<strong>🎯 Đáp án đúng:</strong> <span class="text-danger">${q.answer}</span>`;
-  document.getElementById("directAnswer").classList.remove("hidden");
-}
-
-function prevLesson() { if (currentQuestionIdx > 0) { currentQuestionIdx--; loadCurrentQuestion(); } }
-function nextLesson() {
-  if (!activeQuestions.length) return; currentQuestionIdx++;
-  if (currentQuestionIdx >= activeQuestions.length) {
-    let valid = totalScore.filter(s => s !== undefined); let avg = valid.length ? Math.round(valid.reduce((a, b) => a + b, 0) / valid.length) : 0;
-    document.getElementById("modalBodyText").innerHTML = `Bạn đã hoàn thành bài học.<br>Điểm trung bình: <span class="text-primary fw-bold">${avg}%</span>`;
-    document.getElementById("endLessonModal").classList.add("show"); currentQuestionIdx = 0; totalScore = [];
-  }
-  loadCurrentQuestion();
-}
-
-function closeEndModal() { closeModal('endLessonModal'); switchTopic(true); }
-
-function exportJSON() {
-  let a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob([JSON.stringify(database, null, 2)], { type: "application/json" }));
-  a.download = "data.json"; a.click();
-}
-
-document.addEventListener("keydown", e => {
-  if(["TEXTAREA", "INPUT"].includes(document.activeElement.tagName)) return;
-  if (currentTopicIdx === null || !activeQuestions[currentQuestionIdx]) return;
-  let isTTS = !!activeQuestions[currentQuestionIdx]?.isTTS;
-  if (e.code === "Space") { e.preventDefault(); if (isTTS) toggleStudentTTS(); else (player.paused ? player.play() : player.pause()); }
-  if (e.key === "ArrowLeft" && !isTTS) player.currentTime = Math.max(0, player.currentTime - 3);
-  if (e.key === "ArrowRight" && !isTTS) player.currentTime += 3;
-  if (["ArrowUp", "ArrowDown"].includes(e.key)) {
-    e.preventDefault(); currentPlaybackRate = Math.max(.5, Math.min(2, Math.round((currentPlaybackRate + (e.key === "ArrowUp" ? 0.1 : -0.1)) * 10) / 10));
-    player.playbackRate = currentPlaybackRate; document.getElementById("spd").innerText = "Tốc độ: x" + currentPlaybackRate;
-  }
-});
+showHist();
 </script>
 </body>
 </html>
