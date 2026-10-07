@@ -169,16 +169,7 @@ const QUIZ=[
  ["问“是谁做的”要用：","什么","什么时候","谁",2,"Muốn hỏi “là AI làm” thì dùng từ nào?"],
  ["“多长时间”的“长”读：","zhǎng","cháng","两个都对",1,"\"长\" trong từ \"多长时间\" (bao lâu) đọc như thế nào?"],
  ["我＿＿岁的时候开始打篮球。","已经","什么","十一",2,"Tôi bắt đầu chơi bóng rổ khi ___ tuổi."],
- ["“我非常喜欢踢足球。”意思是：","Tôi không thích đá bóng.","Tôi vô cùng thích đá bóng.","Tôi bắt đầu đá bóng.",1,"“我非常喜欢踢足球。” nghĩa là gì?"],
- ["“生日快乐！”中的“快乐”是什么意思？","vui vẻ","sinh nhật","giới thiệu",0,"“快乐” nghĩa là gì?"],
- ["“这是送给你的。”中的“给”是什么意思？","hỏi","cho / tặng","giúp",1,"“给” trong câu này có nghĩa là gì?"],
- ["谁接了早上的电话？","老师","儿子","谢先生",1,"Ai nghe điện thoại sáng nay?"],
- ["他什么时候开始踢足球？","十一岁的时候","两年的时候","晚上",0,"Anh ấy bắt đầu đá bóng khi nào?"],
- ["他踢足球多长时间了？","两年多","十年","十一年",1,"Anh ấy đã đá bóng bao lâu rồi?"],
- ["“我已经工作了两年了。”表示什么？","还没有工作","已经工作两年","刚开始工作",1,"Câu này biểu thị anh ấy đã làm việc được bao lâu?"],
- ["下面哪句话使用“是……的”正确？","这本书是我写的。","这本书我已经的。","这本书是我写了。",0,"Câu nào sử dụng cấu trúc “是……的” đúng?"],
- ["下面哪句话正确？","我已经工作两年。","我已经工作了两年了。","我已经两年工作。",1,"Câu nào đúng với cấu trúc “已经……了”？"],
- ["“这个工作是他帮我介绍的。”是谁介绍工作的？","我","儿子","他",2,"Ai là người giúp giới thiệu công việc?"];
+ ["“我非常喜欢踢足球。”意思是：","Tôi không thích đá bóng.","Tôi vô cùng thích đá bóng.","Tôi bắt đầu đá bóng.",1,"“我非常喜欢踢足球。” nghĩa là gì?"]];
 
 function speak(t,btn){if(!t)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="zh-CN";u.rate=0.8;speechSynthesis.speak(u);
  if(btn){btn.style.transform="scale(1.3)";setTimeout(()=>btn.style.transform="",250);}}
